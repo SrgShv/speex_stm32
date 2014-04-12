@@ -6,8 +6,8 @@
 **********************************************************************/
 /*
    Last committed:     $Revision: 00 $
-   Last changed by:    $Author: $
-   Last changed date:  $Date:  $
+   Last changed by:    $Author: Serhii Shvets
+   Last changed date:  $Date:  April 10, 2014
    ID:                 $Id:  $
 
 **********************************************************************/
@@ -247,7 +247,7 @@ int main(void)
 	recFlg = 1;
 	while(1)
 	{
-		if(wrFlg == 1) // Если буфер воспроизведения пуст Ft = 500Hz (160smpl =>)
+		if(wrFlg == 1) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ Ft = 500Hz (160smpl =>)
 		{
 			if(checkWord() >= FRAME_SIZE)
 			{
