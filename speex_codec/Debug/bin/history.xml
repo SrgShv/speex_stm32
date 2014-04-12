@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="4.8.1 -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=softfp -mthumb -Wall -g -nostartfiles -Map=speex_codec.map -O0 --gc-sections -lm -lgcc -lc -LC:\CooCox\CoIDE\configuration\ProgramData\speex_codec -TC:\CooCox\CoIDE\configuration\ProgramData\speex_codec/link.ld -g -L..\..\.. -lm -L..\..\.. -lpdmfilter_gcc">
+      <target file="speex_codec.elf" lastModified="14551fe2e65">
+         <source file="..\obj\stm32f4xx_syscfg.o" lastModified="1454962ebbd"/>
+         <source file="..\obj\modes_wb.o" lastModified="1454962ed17"/>
+         <source file="..\obj\speex_callbacks.o" lastModified="1454962ee3c"/>
+         <source file="..\obj\SndPlay.o" lastModified="1454962efa2"/>
+         <source file="..\obj\gain_table.o" lastModified="1454962f041"/>
+         <source file="..\obj\lsp_tables_nb.o" lastModified="1454962f0e2"/>
+         <source file="..\obj\timer.o" lastModified="1454962f1e9"/>
+         <source file="..\obj\kiss_fft.o" lastModified="1454962f41b"/>
+         <source file="..\obj\speex.o" lastModified="1454964f984"/>
+         <source file="..\obj\resample.o" lastModified="1454962f810"/>
+         <source file="..\obj\filterbank.o" lastModified="1454962f963"/>
+         <source file="..\obj\SndMic.o" lastModified="1454e7e447f"/>
+         <source file="..\obj\quant_lsp.o" lastModified="1454962fc4d"/>
+         <source file="..\obj\exc_5_256_table.o" lastModified="1454962fce4"/>
+         <source file="..\obj\ltp_cortexM3.o" lastModified="1454962fd06"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="1454962fd9f"/>
+         <source file="..\obj\filters.o" lastModified="1454962ffee"/>
+         <source file="..\obj\exc_5_64_table.o" lastModified="14549630073"/>
+         <source file="..\obj\bits.o" lastModified="145496301ee"/>
+         <source file="..\obj\main.o" lastModified="14551fe27da"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="145496305bd"/>
+         <source file="..\obj\codec.o" lastModified="1454963065f"/>
+         <source file="..\obj\speex_header.o" lastModified="145496307a5"/>
+         <source file="..\obj\sb_celp.o" lastModified="14549630b13"/>
+         <source file="..\obj\lpc.o" lastModified="14549630bbb"/>
+         <source file="..\obj\vq.o" lastModified="14549630c5c"/>
+         <source file="..\obj\preprocess.o" lastModified="14549630f53"/>
+         <source file="..\obj\cb_search.o" lastModified="1454963114b"/>
+         <source file="..\obj\mdf.o" lastModified="1454963158e"/>
+         <source file="..\obj\buffer.o" lastModified="145496316ba"/>
+         <source file="..\obj\hexc_10_32_table.o" lastModified="1454963173c"/>
+         <source file="..\obj\window.o" lastModified="145496317c0"/>
+         <source file="..\obj\lsp.o" lastModified="14549631935"/>
+         <source file="..\obj\fftwrap.o" lastModified="14549631a6c"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="14549631baa"/>
+         <source file="..\obj\exc_8_128_table.o" lastModified="14549631c3a"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="14549631d59"/>
+         <source file="..\obj\syscalls.o" lastModified="14549631e3f"/>
+         <source file="..\obj\filters_cortexM3.o" lastModified="14549631e62"/>
+         <source file="..\obj\debugLeds.o" lastModified="14549631f66"/>
+         <source file="..\obj\nb_celp.o" lastModified="14549632302"/>
+         <source file="..\obj\modes.o" lastModified="145496323ce"/>
+         <source file="..\obj\high_lsp_tables.o" lastModified="14549632460"/>
+         <source file="..\obj\smallft.o" lastModified="145496327da"/>
+         <source file="..\obj\stm32f4xx_spi.o" lastModified="14549632964"/>
+         <source file="..\obj\ltp.o" lastModified="14549632ba3"/>
+         <source file="..\obj\stm32f4xx_i2c.o" lastModified="14549632d3e"/>
+         <source file="..\obj\misc.o" lastModified="14549632e50"/>
+         <source file="..\obj\exc_10_16_table.o" lastModified="14549632ecf"/>
+         <source file="..\obj\kiss_fftr.o" lastModified="1454963305b"/>
+         <source file="..\obj\hexc_table.o" lastModified="145496330ef"/>
+         <source file="..\obj\vbr.o" lastModified="14549633223"/>
+         <source file="..\obj\gain_table_lbr.o" lastModified="145496332a1"/>
+         <source file="..\obj\jitter.o" lastModified="145496334a6"/>
+         <source file="..\obj\vq_cortexm3.o" lastModified="145496334c8"/>
+         <source file="..\obj\exc_10_32_table.o" lastModified="14549633554"/>
+         <source file="..\obj\stm32f4xx_tim.o" lastModified="14549633822"/>
+         <source file="..\obj\exc_20_32_table.o" lastModified="145496338af"/>
+      </target>
+   </processor>
+</history>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Project version="2G - 1.7.5" name="speex_codec">
+  <Target name="speex_codec" isCurrent="1">
+    <Device manufacturerId="9" manufacturerName="ST" chipId="344" chipName="STM32F407VG" boardId="" boardName=""/>
+    <BuildOption>
+      <Compile>
+        <Option name="OptimizationLevel" value="0"/>
+        <Option name="UseFPU" value="0"/>
+        <Option name="UserEditCompiler" value=""/>
+        <Option name="FPU" value="1"/>
+        <Includepaths>
+          <Includepath path="."/>
+          <Includepath path="speex/include/speex"/>
+          <Includepath path="speex/libspeex"/>
+          <Includepath path="speex/stm32/libspeex/gcc"/>
+        </Includepaths>
+        <DefinedSymbols>
+          <Define name="STM32F407VG"/>
+          <Define name="STM32F4XX"/>
+          <Define name="USE_STDPERIPH_DRIVER"/>
+          <Define name="__ASSEMBLY__"/>
+          <Define name="__FPU_USED"/>
+        </DefinedSymbols>
+      </Compile>
+      <Link useDefault="0">
+        <Option name="DiscardUnusedSection" value="0"/>
+        <Option name="UserEditLinkder" value=""/>
+        <Option name="UseMemoryLayout" value="1"/>
+        <Option name="LTO" value="0"/>
+        <Option name="IsNewStartupCode" value="1"/>
+        <Option name="Library" value="Use base C Library"/>
+        <LinkedLibraries>
+          <Libset dir="" libs="m"/>
+          <Libset dir="" libs="pdmfilter_gcc"/>
+        </LinkedLibraries>
+        <MemoryAreas debugInFlashNotRAM="1">
+          <Memory name="IROM1" type="ReadOnly" size="0x00100000" startValue="0x08000000"/>
+          <Memory name="IRAM1" type="ReadWrite" size="0x00020000" startValue="0x20000000"/>
+          <Memory name="IROM2" type="ReadOnly" size="" startValue=""/>
+          <Memory name="IRAM2" type="ReadWrite" size="0x00010000" startValue="0x10000000"/>
+        </MemoryAreas>
+        <LocateLinkFile path="../../configuration/programdata/speex_codec/link.ld" type="0"/>
+      </Link>
+      <Output>
+        <Option name="OutputFileType" value="0"/>
+        <Option name="Path" value="./"/>
+        <Option name="Name" value="speex_codec"/>
+        <Option name="HEX" value="1"/>
+        <Option name="BIN" value="1"/>
+      </Output>
+      <User>
+        <UserRun name="Run#1" type="Before" checked="0" value=""/>
+        <UserRun name="Run#1" type="After" checked="0" value=""/>
+      </User>
+    </BuildOption>
+    <DebugOption>
+      <Option name="org.coocox.codebugger.gdbjtag.core.adapter" value="ST-Link"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.debugMode" value="SWD"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.clockDiv" value="1M"/>
+      <Option name="org.coocox.codebugger.gdbjtag.corerunToMain" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.jlinkgdbserver" value=""/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.userDefineGDBScript" value=""/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.targetEndianess" value="0"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.jlinkResetMode" value="Type 0: Normal"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.resetMode" value="SYSRESETREQ"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ifSemihost" value="0"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ifCacheRom" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.ipAddress" value="127.0.0.1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.portNumber" value="2009"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.autoDownload" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.verify" value="1"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.downloadFuction" value="Erase Effected"/>
+      <Option name="org.coocox.codebugger.gdbjtag.core.defaultAlgorithm" value="STM32F4xx_1024.elf"/>
+    </DebugOption>
+    <ExcludeFile/>
+  </Target>
+  <Components path="./">
+    <Component id="30" name="C Library" path="" type="2"/>
+    <Component id="54" name="M4 CMSIS Core" path="" type="2"/>
+    <Component id="500" name="CMSIS BOOT" path="" type="2"/>
+    <Component id="501" name="RCC" path="" type="2"/>
+    <Component id="504" name="GPIO" path="" type="2"/>
+    <Component id="509" name="SPI" path="" type="2"/>
+    <Component id="510" name="I2C" path="" type="2"/>
+    <Component id="513" name="TIM" path="" type="2"/>
+    <Component id="524" name="MISC" path="" type="2"/>
+    <Component id="526" name="SYSCFG" path="" type="2"/>
+  </Components>
+  <Files>
+    <File name="speex/libsrc/cb_search_bfin.h" path="speex/libspeex/cb_search_bfin.h" type="1"/>
+    <File name="speex/libsrc/lpc_bfin.h" path="speex/libspeex/lpc_bfin.h" type="1"/>
+    <File name="speex/libsrc/gain_table_lbr.c" path="speex/libspeex/gain_table_lbr.c" type="1"/>
+    <File name="speex/include/speex_echo.h" path="speex/include/speex/speex_echo.h" type="1"/>
+    <File name="speex/libsrc/hexc_10_32_table.c" path="speex/libspeex/hexc_10_32_table.c" type="1"/>
+    <File name="speex/stm32/gcc/filters_cortexM3.h" path="speex/STM32/libspeex/gcc/filters_cortexM3.h" type="1"/>
+    <File name="cmsis/core_cm4_simd.h" path="cmsis/core_cm4_simd.h" type="1"/>
+    <File name="cmsis_boot/stm32f4xx.h" path="cmsis_boot/stm32f4xx.h" type="1"/>
+    <File name="speex/libsrc/vbr.c" path="speex/libspeex/vbr.c" type="1"/>
+    <File name="cmsis_lib/source/stm32f4xx_spi.c" path="cmsis_lib/source/stm32f4xx_spi.c" type="1"/>
+    <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
+    <File name="speex/libsrc/filters_arm4.h" path="speex/libspeex/filters_arm4.h" type="1"/>
+    <File name="speex/libsrc/lsp.h" path="speex/libspeex/lsp.h" type="1"/>
+    <File name="speex/libsrc/exc_10_16_table.c" path="speex/libspeex/exc_10_16_table.c" type="1"/>
+    <File name="speex/libsrc/fftwrap.h" path="speex/libspeex/fftwrap.h" type="1"/>
+    <File name="speex/libsrc/ltp_arm4.h" path="speex/libspeex/ltp_arm4.h" type="1"/>
+    <File name="main.h" path="main.h" type="1"/>
+    <File name="speex/libsrc/lsp.c" path="speex/libspeex/lsp.c" type="1"/>
+    <File name="speex/libsrc/math_approx.h" path="speex/libspeex/math_approx.h" type="1"/>
+    <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
+    <File name="speex/stm32/gcc/ltp_cortexM3.h" path="speex/STM32/libspeex/gcc/ltp_cortexM3.h" type="1"/>
+    <File name="speex/include/speex.h" path="speex/include/speex/speex.h" type="1"/>
+    <File name="speex/libsrc/kiss_fftr.h" path="speex/libspeex/kiss_fftr.h" type="1"/>
+    <File name="speex/libsrc/exc_10_32_table.c" path="speex/libspeex/exc_10_32_table.c" type="1"/>
+    <File name="speex/libsrc/resample.c" path="speex/libspeex/resample.c" type="1"/>
+    <File name="speex/include/speex_resampler.h" path="speex/include/speex/speex_resampler.h" type="1"/>
+    <File name="speex/libsrc/cb_search_arm4.h" path="speex/libspeex/cb_search_arm4.h" type="1"/>
+    <File name="speex/libsrc/preprocess.c" path="speex/libspeex/preprocess.c" type="1"/>
+    <File name="speex/libsrc/mdf.c" path="speex/libspeex/mdf.c" type="1"/>
+    <File name="speex/libsrc/fixed_arm4.h" path="speex/libspeex/fixed_arm4.h" type="1"/>
+    <File name="cmsis_lib/include/stm32f4xx_rcc.h" path="cmsis_lib/include/stm32f4xx_rcc.h" type="1"/>
+    <File name="speex/libsrc/cb_search_cortexM3.h" path="speex/libspeex/cb_search_cortexM3.h" type="1"/>
+    <File name="cmsis_lib/source/stm32f4xx_syscfg.c" path="cmsis_lib/source/stm32f4xx_syscfg.c" type="1"/>
+    <File name="speex/libsrc/lsp_tables_nb.c" path="speex/libspeex/lsp_tables_nb.c" type="1"/>
+    <File name="cmsis_boot/startup/startup_stm32f4xx.c" path="cmsis_boot/startup/startup_stm32f4xx.c" type="1"/>
+    <File name="speex/include/speex_buffer.h" path="speex/include/speex/speex_buffer.h" type="1"/>
+    <File name="speex/libsrc/hexc_table.c" path="speex/libspeex/hexc_table.c" type="1"/>
+    <File name="cmsis_lib/source/stm32f4xx_rcc.c" path="cmsis_lib/source/stm32f4xx_rcc.c" type="1"/>
+    <File name="speex/libsrc/speex.c" path="speex/libspeex/speex.c" type="1"/>
+    <File name="speex/libsrc/jitter.c" path="speex/libspeex/jitter.c" type="1"/>
+    <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
+    <File name="speex/stm32" path="" type="2"/>
+    <File name="speex/libsrc/stack_alloc.h" path="speex/libspeex/stack_alloc.h" type="1"/>
+    <File name="SndMic.h" path="SndMic.h" type="1"/>
+    <File name="speex/libsrc/lpc.h" path="speex/libspeex/lpc.h" type="1"/>
+    <File name="speex/libsrc/fixed_debug.h" path="speex/libspeex/fixed_debug.h" type="1"/>
+    <File name="speex/libsrc/lpc.c" path="speex/libspeex/lpc.c" type="1"/>
+    <File name="cmsis_boot/system_stm32f4xx.c" path="cmsis_boot/system_stm32f4xx.c" type="1"/>
+    <File name="speex/libsrc/quant_lsp.h" path="speex/libspeex/quant_lsp.h" type="1"/>
+    <File name="cmsis_lib/include/stm32f4xx_spi.h" path="cmsis_lib/include/stm32f4xx_spi.h" type="1"/>
+    <File name="speex/libsrc/modes_wb.c" path="speex/libspeex/modes_wb.c" type="1"/>
+    <File name="speex/libsrc/filters_bfin.h" path="speex/libspeex/filters_bfin.h" type="1"/>
+    <File name="timer.c" path="timer.c" type="1"/>
+    <File name="codec.h" path="codec.h" type="1"/>
+    <File name="speex/libsrc/buffer.c" path="speex/libspeex/buffer.c" type="1"/>
+    <File name="cmsis" path="" type="2"/>
+    <File name="speex/libsrc/cb_search_sse.h" path="speex/libspeex/cb_search_sse.h" type="1"/>
+    <File name="speex/libsrc/filters.h" path="speex/libspeex/filters.h" type="1"/>
+    <File name="cmsis_lib" path="" type="2"/>
+    <File name="speex/include/speex_jitter.h" path="speex/include/speex/speex_jitter.h" type="1"/>
+    <File name="SndMic.c" path="SndMic.c" type="1"/>
+    <File name="speex/libsrc/exc_20_32_table.c" path="speex/libspeex/exc_20_32_table.c" type="1"/>
+    <File name="speex/libsrc/bits.c" path="speex/libspeex/bits.c" type="1"/>
+    <File name="speex/libsrc/vq.c" path="speex/libspeex/vq.c" type="1"/>
+    <File name="voice.h" path="voice.h" type="1"/>
+    <File name="cmsis_lib/include/misc.h" path="cmsis_lib/include/misc.h" type="1"/>
+    <File name="codec.c" path="codec.c" type="1"/>
+    <File name="speex/include/speex_preprocess.h" path="speex/include/speex/speex_preprocess.h" type="1"/>
+    <File name="speex/stm32/gcc/ltp_cortexM3.s" path="speex/STM32/libspeex/gcc/ltp_cortexM3.s" type="1"/>
+    <File name="speex/libsrc/vbr.h" path="speex/libspeex/vbr.h" type="1"/>
+    <File name="main.c" path="main.c" type="1"/>
+    <File name="speex/libsrc/vq_arm4.h" path="speex/libspeex/vq_arm4.h" type="1"/>
+    <File name="cmsis_lib/source/stm32f4xx_gpio.c" path="cmsis_lib/source/stm32f4xx_gpio.c" type="1"/>
+    <File name="speex/libsrc/arch.h" path="speex/libspeex/arch.h" type="1"/>
+    <File name="cmsis_lib/include/stm32f4xx_i2c.h" path="cmsis_lib/include/stm32f4xx_i2c.h" type="1"/>
+    <File name="debugLeds.h" path="debugLeds.h" type="1"/>
+    <File name="SndPlay.c" path="SndPlay.c" type="1"/>
+    <File name="speex/libsrc/nb_celp.c" path="speex/libspeex/nb_celp.c" type="1"/>
+    <File name="timer.h" path="timer.h" type="1"/>
+    <File name="speex/libsrc/_kiss_fft_guts.h" path="speex/libspeex/_kiss_fft_guts.h" type="1"/>
+    <File name="cmsis_boot" path="" type="2"/>
+    <File name="cmsis_lib/include/stm32f4xx_syscfg.h" path="cmsis_lib/include/stm32f4xx_syscfg.h" type="1"/>
+    <File name="speex/libsrc/smallft.h" path="speex/libspeex/smallft.h" type="1"/>
+    <File name="speex/libsrc/ltp.c" path="speex/libspeex/ltp.c" type="1"/>
+    <File name="cmsis_boot/startup" path="" type="2"/>
+    <File name="cmsis/core_cm4.h" path="cmsis/core_cm4.h" type="1"/>
+    <File name="speex/libsrc/vq_bfin.h" path="speex/libspeex/vq_bfin.h" type="1"/>
+    <File name="speex/libsrc/exc_5_64_table.c" path="speex/libspeex/exc_5_64_table.c" type="1"/>
+    <File name="cmsis_lib/source/misc.c" path="cmsis_lib/source/misc.c" type="1"/>
+    <File name="cmsis_lib/include/stm32f4xx_tim.h" path="cmsis_lib/include/stm32f4xx_tim.h" type="1"/>
+    <File name="speex/libsrc/filters.c" path="speex/libspeex/filters.c" type="1"/>
+    <File name="cmsis_lib/source/stm32f4xx_i2c.c" path="cmsis_lib/source/stm32f4xx_i2c.c" type="1"/>
+    <File name="cmsis_lib/source" path="" type="2"/>
+    <File name="speex/include/speex_types.h" path="speex/include/speex/speex_types.h" type="1"/>
+    <File name="speex/libsrc/kiss_fft.h" path="speex/libspeex/kiss_fft.h" type="1"/>
+    <File name="speex/stm32/arm" path="" type="2"/>
+    <File name="speex/libsrc/ltp_sse.h" path="speex/libspeex/ltp_sse.h" type="1"/>
+    <File name="speex/libsrc/speex_header.c" path="speex/libspeex/speex_header.c" type="1"/>
+    <File name="speex/libsrc/quant_lsp.c" path="speex/libspeex/quant_lsp.c" type="1"/>
+    <File name="speex/libsrc/vq.h" path="speex/libspeex/vq.h" type="1"/>
+    <File name="cmsis_boot/stm32f4xx_conf.h" path="cmsis_boot/stm32f4xx_conf.h" type="1"/>
+    <File name="speex/include/speex_callbacks.h" path="speex/include/speex/speex_callbacks.h" type="1"/>
+    <File name="cmsis_boot/system_stm32f4xx.h" path="cmsis_boot/system_stm32f4xx.h" type="1"/>
+    <File name="speex/libsrc/quant_lsp_bfin.h" path="speex/libspeex/quant_lsp_bfin.h" type="1"/>
+    <File name="pdm_filter.h" path="pdm_filter.h" type="1"/>
+    <File name="speex/libsrc/lsp_bfin.h" path="speex/libspeex/lsp_bfin.h" type="1"/>
+    <File name="speex/libsrc/filterbank.h" path="speex/libspeex/filterbank.h" type="1"/>
+    <File name="speex/libsrc/sb_celp.c" path="speex/libspeex/sb_celp.c" type="1"/>
+    <File name="speex/libsrc/ltp.h" path="speex/libspeex/ltp.h" type="1"/>
+    <File name="speex/libsrc/nb_celp.h" path="speex/libspeex/nb_celp.h" type="1"/>
+    <File name="speex/libsrc/gain_table.c" path="speex/libspeex/gain_table.c" type="1"/>
+    <File name="speex/libsrc/high_lsp_tables.c" path="speex/libspeex/high_lsp_tables.c" type="1"/>
+    <File name="speex/libsrc/pseudofloat.h" path="speex/libspeex/pseudofloat.h" type="1"/>
+    <File name="speex/libsrc/cb_search.h" path="speex/libspeex/cb_search.h" type="1"/>
+    <File name="speex/libsrc/kiss_fftr.c" path="speex/libspeex/kiss_fftr.c" type="1"/>
+    <File name="speex/include" path="" type="2"/>
+    <File name="speex/libsrc/exc_5_256_table.c" path="speex/libspeex/exc_5_256_table.c" type="1"/>
+    <File name="speex/libsrc/exc_8_128_table.c" path="speex/libspeex/exc_8_128_table.c" type="1"/>
+    <File name="speex/libsrc/modes.h" path="speex/libspeex/modes.h" type="1"/>
+    <File name="speex/libsrc/window.c" path="speex/libspeex/window.c" type="1"/>
+    <File name="speex/libsrc/filterbank.c" path="speex/libspeex/filterbank.c" type="1"/>
+    <File name="speex/libsrc/sb_celp.h" path="speex/libspeex/sb_celp.h" type="1"/>
+    <File name="speex/libsrc/fixed_bfin.h" path="speex/libspeex/fixed_bfin.h" type="1"/>
+    <File name="SndPlay.h" path="SndPlay.h" type="1"/>
+    <File name="speex/libsrc/vq_sse.h" path="speex/libspeex/vq_sse.h" type="1"/>
+    <File name="speex/stm32/gcc/vq_cortexm3.s" path="speex/STM32/libspeex/gcc/vq_cortexm3.s" type="1"/>
+    <File name="speex/libsrc/vorbis_psy.h" path="speex/libspeex/vorbis_psy.h" type="1"/>
+    <File name="speex/libsrc/misc_bfin.h" path="speex/libspeex/misc_bfin.h" type="1"/>
+    <File name="speex/libsrc/fixed_generic.h" path="speex/libspeex/fixed_generic.h" type="1"/>
+    <File name="speex/libsrc/os_support.h" path="speex/libspeex/os_support.h" type="1"/>
+    <File name="speex/include/speex_bits.h" path="speex/include/speex/speex_bits.h" type="1"/>
+    <File name="speex/stm32/gcc" path="" type="2"/>
+    <File name="speex/include/speex_header.h" path="speex/include/speex/speex_header.h" type="1"/>
+    <File name="speex/libsrc/ltp_bfin.h" path="speex/libspeex/ltp_bfin.h" type="1"/>
+    <File name="speex/libsrc/fftwrap.c" path="speex/libspeex/fftwrap.c" type="1"/>
+    <File name="cmsis_lib/source/stm32f4xx_tim.c" path="cmsis_lib/source/stm32f4xx_tim.c" type="1"/>
+    <File name="speex/libsrc/cb_search.c" path="speex/libspeex/cb_search.c" type="1"/>
+    <File name="cmsis_lib/include/stm32f4xx_gpio.h" path="cmsis_lib/include/stm32f4xx_gpio.h" type="1"/>
+    <File name="speex/libsrc/fixed_arm5e.h" path="speex/libspeex/fixed_arm5e.h" type="1"/>
+    <File name="syscalls" path="" type="2"/>
+    <File name="speex/libsrc/speex_callbacks.c" path="speex/libspeex/speex_callbacks.c" type="1"/>
+    <File name="speex/libsrc/smallft.c" path="speex/libspeex/smallft.c" type="1"/>
+    <File name="speex" path="" type="2"/>
+    <File name="cmsis_lib/include" path="" type="2"/>
+    <File name="speex/libsrc/kiss_fft.c" path="speex/libspeex/kiss_fft.c" type="1"/>
+    <File name="speex/stm32/gcc/filters_cortexM3.s" path="speex/STM32/libspeex/gcc/filters_cortexM3.s" type="1"/>
+    <File name="speex/libsrc/modes.c" path="speex/libspeex/modes.c" type="1"/>
+    <File name="speex/libsrc" path="" type="2"/>
+    <File name="debugLeds.c" path="debugLeds.c" type="1"/>
+    <File name="speex/libsrc/filters_sse.h" path="speex/libspeex/filters_sse.h" type="1"/>
+  </Files>
+</Project>

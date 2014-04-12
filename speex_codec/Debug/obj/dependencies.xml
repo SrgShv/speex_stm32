@@ -1,0 +1,557 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/I..\..\..\workspace\speex_codec\speex\include\speex /I..\..\..\workspace\speex_codec\cmsis_lib\include /I..\..\..\workspace\speex_codec /I..\..\..\workspace\speex_codec\speex\STM32 /I..\..\..\workspace\speex_codec\speex\libspeex /I..\..\..\workspace\speex_codec\speex\STM32\libspeex\gcc /I..\..\..\workspace\speex_codec\speex\STM32\libspeex /I..\..\..\workspace\speex_codec\cmsis /I..\..\..\workspace /I..\..\..\workspace\speex_codec\speex /I..\..\..\workspace\speex_codec\cmsis_lib /I..\..\.. /I..\..\..\workspace\speex_codec\cmsis_boot /I..\..\..\workspace\speex_codec\speex\include">
+      <source file="..\..\..\SndPlay.h" lastModified="144ea10a6e7">
+      </source>
+      <source file="..\..\..\speex\libspeex\speex_header.c" lastModified="1451e68c2ba">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\include\speex\speex_header.h"/>
+         <include file="..\..\..\speex\include\speex\speex.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\speex\STM32\libspeex\gcc\filters_cortexM3.h" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\SndPlay.c" lastModified="14524e6699a">
+         <include file="..\..\..\SndPlay.h"/>
+         <include file="..\..\..\main.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\filterbank.h" lastModified="12106146360">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\codec.h" lastModified="145255e503a">
+      </source>
+      <source file="..\..\..\speex\libspeex\os_support.h" lastModified="1451e889264">
+         <include file="..\..\..\speex\STM32\config.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\cb_search_cortexM3.h" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\speex\libspeex\hexc_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\filterbank.c" lastModified="12106146748">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\filterbank.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_buffer.h" lastModified="12106146360">
+         <include file="..\..\..\speex\include\speex\speex_types.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\fixed_arm5e.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\STM32\libspeex\gcc\ltp_cortexM3.s" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\codec.c" lastModified="14543442790">
+         <include file="..\..\..\codec.h"/>
+         <include file="..\..\..\speex\include\speex\speex.h"/>
+         <include file="..\..\..\speex\include\speex\speex_callbacks.h"/>
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_bits.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\vorbis_psy.h" lastModified="12106146b30">
+         <include file="..\..\..\speex\libspeex\smallft.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\filters_bfin.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\stack_alloc.h" lastModified="12106147ad0">
+      </source>
+      <source file="..\..\..\speex\libspeex\bits.c" lastModified="1451e68c1dc">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\window.c" lastModified="12106146b30">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\cmsis\core_cm4.h" lastModified="1451b38cb71">
+         <include file="..\..\..\cmsis\core_cmInstr.h"/>
+         <include file="..\..\..\cmsis\core_cmFunc.h"/>
+         <include file="..\..\..\cmsis\core_cm4_simd.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f4xx_i2c.c" lastModified="1451b391fc7">
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_i2c.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\filters.h" lastModified="12106146360">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\arch.h" lastModified="1451e7843aa">
+         <include file="..\..\..\speex\include\speex\speex_types.h"/>
+         <include file="..\..\..\speex\libspeex\fixed_debug.h"/>
+         <include file="..\..\..\speex\libspeex\fixed_generic.h"/>
+         <include file="..\..\..\speex\libspeex\fixed_arm5e.h"/>
+         <include file="..\..\..\speex\libspeex\fixed_arm4.h"/>
+         <include file="..\..\..\speex\libspeex\fixed_bfin.h"/>
+      </source>
+      <source file="..\..\..\speex\STM32\libspeex\gcc\ltp_cortexM3.h" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\speex\libspeex\exc_10_16_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\fixed_generic.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\quant_lsp_bfin.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\filters.c" lastModified="1452ace4f31">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\filters.h"/>
+         <include file="..\..\..\speex\libspeex\stack_alloc.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\ltp.h"/>
+         <include file="..\..\..\speex\libspeex\filters_sse.h"/>
+         <include file="..\..\..\speex\libspeex\filters_arm4.h"/>
+         <include file="..\..\..\speex\libspeex\filters_bfin.h"/>
+         <include file="..\..\..\speex\STM32\libspeex\gcc\filters_cortexM3.h"/>
+         <include file="..\..\..\speex\STM32\libspeex\gcc\filters_cortexM3.h"/>
+         <include file="..\..\..\speex\STM32\libspeex\gcc\filters_cortexM3.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\misc.h" lastModified="1451b39808f">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\vq_arm4.h" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\speex\libspeex\lsp.h" lastModified="12106146360">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="1451b395b29">
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\_kiss_fft_guts.h" lastModified="1451e67bb65">
+         <include file="..\..\..\speex\libspeex\kiss_fft.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\lsp.c" lastModified="12106146748">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\lsp.h"/>
+         <include file="..\..\..\speex\libspeex\stack_alloc.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\lsp_bfin.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\ltp.h" lastModified="12106146360">
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\fixed_debug.h" lastModified="12106146748">
+      </source>
+      <source file="..\..\..\speex\libspeex\smallft.h" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\speex\libspeex\nb_celp.h" lastModified="1451e67bc88">
+         <include file="..\..\..\speex\libspeex\modes.h"/>
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\include\speex\speex_callbacks.h"/>
+         <include file="..\..\..\speex\libspeex\vbr.h"/>
+         <include file="..\..\..\speex\libspeex\filters.h"/>
+         <include file="..\..\..\speex\libspeex\vorbis_psy.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\ltp.c" lastModified="12106146f18">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\ltp.h"/>
+         <include file="..\..\..\speex\libspeex\stack_alloc.h"/>
+         <include file="..\..\..\speex\libspeex\filters.h"/>
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\libspeex\ltp_sse.h"/>
+         <include file="..\..\..\speex\libspeex\ltp_arm4.h"/>
+         <include file="..\..\..\speex\libspeex\ltp_bfin.h"/>
+         <include file="..\..\..\speex\STM32\libspeex\gcc\ltp_cortexM3.h"/>
+         <include file="..\..\..\speex\STM32\libspeex\gcc\ltp_cortexM3.h"/>
+         <include file="..\..\..\speex\STM32\libspeex\gcc\ltp_cortexM3.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\high_lsp_tables.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\fixed_bfin.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\smallft.c" lastModified="12106146f18">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\smallft.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\nb_celp.c" lastModified="1452d4c85d6">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\nb_celp.h"/>
+         <include file="..\..\..\speex\libspeex\lpc.h"/>
+         <include file="..\..\..\speex\libspeex\lsp.h"/>
+         <include file="..\..\..\speex\libspeex\ltp.h"/>
+         <include file="..\..\..\speex\libspeex\quant_lsp.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search.h"/>
+         <include file="..\..\..\speex\libspeex\filters.h"/>
+         <include file="..\..\..\speex\libspeex\stack_alloc.h"/>
+         <include file="..\..\..\speex\libspeex\vq.h"/>
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\libspeex\vbr.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\include\speex\speex_callbacks.h"/>
+         <include file="..\..\..\speex\libspeex\vorbis_psy.h"/>
+      </source>
+      <source file="..\..\..\speex\STM32\config.h" lastModified="1451e7b79ad">
+      </source>
+      <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="1451b39809f">
+         <include file="..\..\..\cmsis_lib\include\misc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\ltp_bfin.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\modes.h" lastModified="1451e67bc59">
+         <include file="..\..\..\speex\include\speex\speex.h"/>
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\cb_search.h" lastModified="1451e67bb7f">
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\lpc_bfin.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\cmsis_boot\stm32f4xx.h" lastModified="1451b419709">
+         <include file="..\..\..\cmsis\core_cm4.h"/>
+         <include file="..\..\..\cmsis_boot\system_stm32f4xx.h"/>
+         <include file="..\..\..\cmsis_boot\stm32f4xx_conf.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\modes.c" lastModified="12106146f18">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\modes.h"/>
+         <include file="..\..\..\speex\libspeex\ltp.h"/>
+         <include file="..\..\..\speex\libspeex\quant_lsp.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search.h"/>
+         <include file="..\..\..\speex\libspeex\sb_celp.h"/>
+         <include file="..\..\..\speex\libspeex\nb_celp.h"/>
+         <include file="..\..\..\speex\libspeex\vbr.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\vq.h" lastModified="12106146f18">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f4xx_syscfg.h" lastModified="1451b3a4077">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\cb_search.c" lastModified="1452fc976ff">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search.h"/>
+         <include file="..\..\..\speex\libspeex\filters.h"/>
+         <include file="..\..\..\speex\libspeex\stack_alloc.h"/>
+         <include file="..\..\..\speex\libspeex\vq.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search_sse.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search_arm4.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search_bfin.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search_cortexM3.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\exc_5_64_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\exc_5_256_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\exc_10_32_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\vq.c" lastModified="12106147300">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\vq.h"/>
+         <include file="..\..\..\speex\libspeex\stack_alloc.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\vq_sse.h"/>
+         <include file="..\..\..\speex\libspeex\vq_arm4.h"/>
+         <include file="..\..\..\speex\libspeex\vq_bfin.h"/>
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_header.h" lastModified="1451e67bacd">
+         <include file="..\..\..\speex\include\speex\speex_types.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\preprocess.c" lastModified="1451e68c670">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\include\speex\speex_preprocess.h"/>
+         <include file="..\..\..\speex\include\speex\speex_echo.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\fftwrap.h"/>
+         <include file="..\..\..\speex\libspeex\filterbank.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f4xx_spi.h" lastModified="1451b390428">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\gain_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_preprocess.h" lastModified="1451e67bae8">
+         <include file="..\..\..\speex\include\speex\speex_types.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\cb_search_bfin.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h" lastModified="1451b38c7ab">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\cmsis_boot\system_stm32f4xx.h" lastModified="1451b38c75a">
+      </source>
+      <source file="..\..\..\SndMic.h" lastModified="144c87a0f17">
+      </source>
+      <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="1451b38cb7a">
+      </source>
+      <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="1451b44424b">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\SndMic.c" lastModified="1454e7e39e1">
+         <include file="..\..\..\SndMic.h"/>
+         <include file="..\..\..\pdm_filter.h"/>
+         <include file="..\..\..\main.h"/>
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_jitter.h" lastModified="1451e67badb">
+         <include file="..\..\..\speex\include\speex\speex_types.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\pseudofloat.h" lastModified="1451e67c09e">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\lsp_tables_nb.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_echo.h" lastModified="1451e67bab7">
+         <include file="..\..\..\speex\include\speex\speex_types.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\lpc.h" lastModified="12106146360">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\pdm_filter.h" lastModified="13349a83018">
+      </source>
+      <source file="..\..\..\speex\libspeex\modes_wb.c" lastModified="1451e68c656">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\modes.h"/>
+         <include file="..\..\..\speex\libspeex\ltp.h"/>
+         <include file="..\..\..\speex\libspeex\quant_lsp.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search.h"/>
+         <include file="..\..\..\speex\libspeex\sb_celp.h"/>
+         <include file="..\..\..\speex\libspeex\nb_celp.h"/>
+         <include file="..\..\..\speex\libspeex\vbr.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\lpc.c" lastModified="12106146360">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\lpc.h"/>
+         <include file="..\..\..\speex\libspeex\lpc_bfin.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\exc_8_128_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\buffer.c" lastModified="1451e68c1ea">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\include\speex\speex_buffer.h"/>
+      </source>
+      <source file="..\..\..\syscalls\syscalls.c" lastModified="1451b428ce4">
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_resampler.h" lastModified="1451e67baf8">
+         <include file="..\..\..\speex\include\speex\speex_types.h"/>
+      </source>
+      <source file="..\..\..\voice.h" lastModified="14523514214">
+      </source>
+      <source file="..\..\..\speex\libspeex\cb_search_sse.h" lastModified="12106146748">
+      </source>
+      <source file="..\..\..\speex\libspeex\resample.c" lastModified="1451e68d240">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\include\speex\speex_resampler.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\include\speex\speex_resampler.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\libspeex\stack_alloc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\filters_arm4.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\math_approx.h" lastModified="1451e67bc34">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="1451b38cb77">
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_types.h" lastModified="1451e67cae4">
+      </source>
+      <source file="..\..\..\speex\libspeex\hexc_10_32_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\cmsis_boot\stm32f4xx_conf.h" lastModified="1451b6decfb">
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_i2c.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_spi.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_syscfg.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
+         <include file="..\..\..\cmsis_lib\include\misc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\sb_celp.h" lastModified="1451e67bd0f">
+         <include file="..\..\..\speex\libspeex\modes.h"/>
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\libspeex\nb_celp.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\vq_bfin.h" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f4xx_spi.c" lastModified="1451b39043d">
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_spi.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\sb_celp.c" lastModified="1451e887f0c">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\sb_celp.h"/>
+         <include file="..\..\..\speex\libspeex\filters.h"/>
+         <include file="..\..\..\speex\libspeex\lpc.h"/>
+         <include file="..\..\..\speex\libspeex\lsp.h"/>
+         <include file="..\..\..\speex\libspeex\stack_alloc.h"/>
+         <include file="..\..\..\speex\libspeex\cb_search.h"/>
+         <include file="..\..\..\speex\libspeex\quant_lsp.h"/>
+         <include file="..\..\..\speex\libspeex\vq.h"/>
+         <include file="..\..\..\speex\libspeex\ltp.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\kiss_fft.h" lastModified="1451e609c2e">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\debugLeds.h" lastModified="144af159f08">
+      </source>
+      <source file="..\..\..\speex\libspeex\kiss_fft.c" lastModified="1451e8882ed">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\_kiss_fft_guts.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="1451b38c7af">
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\speex_callbacks.c" lastModified="1451e68c2ae">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\include\speex\speex_callbacks.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\debugLeds.c" lastModified="1451b74ddc6">
+         <include file="..\..\..\debugLeds.h"/>
+         <include file="..\..\..\main.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\fixed_arm4.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\vq_sse.h" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\speex\libspeex\exc_20_32_table.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\ltp_arm4.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\vbr.h" lastModified="12106146b30">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\lsp_bfin.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="1451b38c70e">
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\quant_lsp.h" lastModified="145295cc67b">
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\include\speex\speex.h" lastModified="1451e608e4b">
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\include\speex\speex_types.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\vbr.c" lastModified="1451ef17282">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\vbr.h"/>
+      </source>
+      <source file="..\..\..\cmsis\core_cm4_simd.h" lastModified="1451b38cb74">
+      </source>
+      <source file="..\..\..\cmsis_lib\source\stm32f4xx_syscfg.c" lastModified="1451b3a407a">
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_syscfg.h"/>
+         <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\quant_lsp.c" lastModified="12106146f18">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\quant_lsp.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\quant_lsp_bfin.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\kiss_fftr.h" lastModified="12106146360">
+         <include file="..\..\..\speex\libspeex\kiss_fft.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f4xx_i2c.h" lastModified="1451b391fb5">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\speex\include\speex\speex_callbacks.h" lastModified="12106146360">
+         <include file="..\..\..\speex\include\speex\speex.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\kiss_fftr.c" lastModified="1451e8644a4">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\libspeex\kiss_fftr.h"/>
+         <include file="..\..\..\speex\libspeex\_kiss_fft_guts.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\gain_table_lbr.c" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="1454959e3ea">
+      </source>
+      <source file="..\..\..\speex\libspeex\filters_sse.h" lastModified="12106146748">
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h" lastModified="1451b38c70a">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h" lastModified="1451b395b1c">
+         <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\main.h" lastModified="14528dff004">
+         <include file="..\..\..\cmsis_boot\stm32f4xx_conf.h"/>
+      </source>
+      <source file="..\..\..\timer.h" lastModified="144ae956a03">
+      </source>
+      <source file="..\..\..\speex\libspeex\cb_search_arm4.h" lastModified="12106146360">
+      </source>
+      <source file="..\..\..\speex\libspeex\jitter.c" lastModified="1451ef318c1">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\include\speex\speex.h"/>
+         <include file="..\..\..\speex\include\speex\speex_bits.h"/>
+         <include file="..\..\..\speex\include\speex\speex_jitter.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\mdf.c" lastModified="1451e888724">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\include\speex\speex_echo.h"/>
+         <include file="..\..\..\speex\libspeex\fftwrap.h"/>
+         <include file="..\..\..\speex\libspeex\pseudofloat.h"/>
+         <include file="..\..\..\speex\libspeex\math_approx.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+      <source file="..\..\..\timer.c" lastModified="1451b73db74">
+         <include file="..\..\..\timer.h"/>
+         <include file="..\..\..\main.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\ltp_sse.h" lastModified="12106146748">
+      </source>
+      <source file="..\..\..\speex\libspeex\fftwrap.h" lastModified="12106146360">
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+      </source>
+      <source file="..\..\..\speex\libspeex\fftwrap.c" lastModified="1451e817b1a">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\arch.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+         <include file="..\..\..\speex\libspeex\smallft.h"/>
+         <include file="..\..\..\speex\libspeex\kiss_fftr.h"/>
+         <include file="..\..\..\speex\libspeex\kiss_fft.h"/>
+      </source>
+      <source file="..\..\..\speex\STM32\libspeex\gcc\filters_cortexM3.s" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\speex\STM32\libspeex\gcc\vq_cortexm3.s" lastModified="12106146b30">
+      </source>
+      <source file="..\..\..\speex\libspeex\speex.c" lastModified="1454964f1b5">
+         <include file="..\..\..\speex\STM32\config.h"/>
+         <include file="..\..\..\speex\libspeex\modes.h"/>
+         <include file="..\..\..\speex\libspeex\os_support.h"/>
+      </source>
+   </includePath>
+</dependencies>
