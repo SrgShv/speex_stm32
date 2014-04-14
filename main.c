@@ -6,8 +6,8 @@
 **********************************************************************/
 /*
    Last committed:     $Revision: 00 $
-   Last changed by:    $Author: $
-   Last changed date:  $Date:  $
+   Last changed by:    $Author: Serhii Shvets
+   Last changed date:  $Date: April 13, 2014
    ID:                 $Id:  $
 
 **********************************************************************/
