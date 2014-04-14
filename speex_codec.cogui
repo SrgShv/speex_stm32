@@ -23,8 +23,7 @@
 </info>
 </editorArea>
 <editor id="org.coocox.welcome.ui.WelcomePage" name="" partName="welcome" title="welcome" tooltip="" workbook="DefaultEditorWorkbook">
-<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
-<org.coocox.welcome.ui.WelcomePage/>
+<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">&#x0A;<org.coocox.welcome.ui.WelcomePage/>
 </input>
 </editor>
 <editor id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
@@ -51,9 +50,9 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/speex_codec/SndMic.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3124" selectionTopPixel="1448"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/CooCox/CoIDE/workspace/speex_codec/main.c" title="main.c" tooltip="C:/CooCox/CoIDE/workspace/speex_codec/main.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/temp/GIT_TEST/speex_stm32/main.c" title="main.c" tooltip="C:/temp/GIT_TEST/speex_stm32/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/speex_codec/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4205" selectionTopPixel="3587"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3295" selectionTopPixel="2771"/>
 </editor>
 </editors>
 <views>
@@ -485,6 +484,11 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
+<persistable>
+<org.coocox.welcome.ui.WelcomePage/>
+</persistable>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="vbr.c" tooltip="speex_codec/speex/libsrc/vbr.c">
 <persistable path="/speex_codec/speex/libsrc/vbr.c"/>
 </file>
@@ -523,9 +527,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lpc.c" tooltip="speex_codec/speex/libsrc/lpc.c">
 <persistable path="/speex_codec/speex/libsrc/lpc.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="modes.h" tooltip="speex_codec/speex/libsrc/modes.h">
-<persistable path="/speex_codec/speex/libsrc/modes.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="bits.c" tooltip="speex_codec/speex/libsrc/bits.c">
 <persistable path="/speex_codec/speex/libsrc/bits.c"/>
