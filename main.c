@@ -6,8 +6,8 @@
 **********************************************************************/
 /*
    Last committed:     $Revision: 00 $
-   Last changed by:    $Author: Serhii Shvets
-   Last changed date:  $Date:  April 10, 2014
+   Last changed by:    $Author: $
+   Last changed date:  $Date:  $
    ID:                 $Id:  $
 
 **********************************************************************/
@@ -171,7 +171,7 @@ void IRQ_mic(WORD *bff, WORD sz) // Ft = 500Hz
 			{
 				tmp = (signed short)bff[i] - (signed short)0x7FFF;
 			};
-			tmp /= 3;
+			//tmp /= 3;
 			putWord(tmp);
 		};
 		debugBlinkRedLed(500);
@@ -202,7 +202,7 @@ void IRQ_play(void)
 
    //debugBlinkBlueLed(16000);
 
-   sendSample(tmpd);
+   sendSample(tmpd/3);
    //sendSample(0);
 }
 
@@ -219,11 +219,13 @@ void getFromFileSpx(BYTE *pack)
 
 int main(void)
 {
+	//char codecIsOn = 0;
+	char codecIsOn = 1;
 	signed short *pOP = 0;
-	signed short pTmp[200];
+	//signed short pTmp[200];
 	signed short *pSPX = 0;
 	BYTE encBff[100];
-	BYTE *pOpEnc = (BYTE *)(&encBff[0]);
+	//BYTE *pOpEnc = (BYTE *)(&encBff[0]);
 	WORD n;
 	signed short pcmBff[200];
 	signed short *pPcm = (signed short *)(&pcmBff[0]);
@@ -247,7 +249,7 @@ int main(void)
 	recFlg = 1;
 	while(1)
 	{
-		if(wrFlg == 1) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ Ft = 500Hz (160smpl =>)
+		if(wrFlg == 1) // Если буфер воспроизведения пуст Ft = 500Hz (160smpl =>)
 		{
 			if(checkWord() >= FRAME_SIZE)
 			{
@@ -257,20 +259,14 @@ int main(void)
 				//pOut = pTmp;
 				for(n=0; n<FRAME_SIZE; n++)
 				{
-					pPcm[n] = getWord()/1;
-					//pOP[n] = getWord();
+					pPcm[n] = getWord();
 				};
-				pOut = encodeSPEEX(pPcm);
 
-				/*
-				for(n=0; n<FRAME_SIZE; n++)
-				{
-					pOP[n] = pPcm[n];
-				};
-				*/
+				if(codecIsOn == 1) pOut = encodeSPEEX(pPcm);
 
 				//getFromFileSpx(pOut);
-				pOP = decodeSPEEX(pOut);
+				if(codecIsOn == 1) pOP = decodeSPEEX(pOut);
+				else pOP = pPcm;
 
 				if(keyAB == 0) pSPX = (signed short*)(&pcm_dataA[0]);
 				else pSPX = (signed short*)(&pcm_dataB[0]);
@@ -278,7 +274,6 @@ int main(void)
 				for(n=0; n<FRAME_SIZE; n++)
 				{
 					pSPX[n] = pOP[n];
-					//pSPX[n] = getWord();
 				};
 				wrFlg = 0;
 				debugBlinkGreenLed(50);

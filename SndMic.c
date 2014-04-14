@@ -25,10 +25,10 @@ void initMic(void)
    RCC->AHB1ENR |= RCC_AHB1ENR_CRCEN;
 
    /* Filter LP & HP Init */
-   Filter.LP_HZ = 4000;
-   Filter.HP_HZ = 150;
-   //Filter.LP_HZ = 0;
-   //Filter.HP_HZ = 0;
+   //Filter.LP_HZ = 6000;
+   //Filter.HP_HZ = 100;
+   Filter.LP_HZ = 0;
+   Filter.HP_HZ = 0;
 
    Filter.Fs = 16000;
    Filter.Out_MicChannels = 1;
@@ -95,9 +95,9 @@ void initMic(void)
 /** Getting data from microphone and filterring PDM to PCM */
 void SPI2_IRQHandler(void) 
 {  
-	WORD volume, i;
+	WORD volume;//, i;
 	WORD app;
-	signed short tmp;
+	//signed short tmp;
 	
 	/* Check if data are available in SPI Data register */
 	if (SPI_GetITStatus(SPI2, SPI_I2S_IT_RXNE) != RESET)
@@ -108,7 +108,7 @@ void SPI2_IRQHandler(void)
 		if (InternalBufferSize >= INTERNAL_BUFF_SIZE) // 64
 		{
 			InternalBufferSize = 0;
-			volume = 100;
+			volume = 80;
 			PDM_Filter_64_LSB((BYTE *)InternalBuffer, (WORD *)RecBuf, volume , (PDMFilter_InitStruct *)&Filter);
 
 			//for(i=0; i<PCM_OUT_SIZE; i++)

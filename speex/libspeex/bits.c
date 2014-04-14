@@ -36,7 +36,8 @@
 #include "config.h"
 #endif
 
-#include <speex/speex_bits.h>
+//#include <speex/speex_bits.h>
+#include "speex_bits.h"
 #include "arch.h"
 #include "os_support.h"
 

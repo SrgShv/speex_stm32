@@ -50,9 +50,9 @@
 #endif
 
 //added by MCD Application Team June 2008
-#include "cb_search_cortexM3.h"
+//#include "cb_search_cortexM3.h"
 
-
+/*
 #ifndef OVERRIDE_COMPUTE_WEIGHTED_CODEBOOK
 static void compute_weighted_codebook(const signed char *shape_cb, const spx_word16_t *r, spx_word16_t *resp, spx_word16_t *resp2, spx_word32_t *E, int shape_cb_size, int subvect_size, char *stack)
 {
@@ -68,7 +68,7 @@ static void compute_weighted_codebook(const signed char *shape_cb, const spx_wor
          shape[k] = (spx_word16_t)shape_cb[i*subvect_size+k];
       E[i]=0;
 
-      /* Compute codeword response using convolution with impulse response */
+      // Compute codeword response using convolution with impulse response
       for(j=0;j<subvect_size;j++)
       {
          spx_word32_t resj=0;
@@ -80,16 +80,16 @@ static void compute_weighted_codebook(const signed char *shape_cb, const spx_wor
 #else
          res16 = 0.03125f*resj;
 #endif
-         /* Compute codeword energy */
+         // Compute codeword energy
          E[i]=MAC16_16(E[i],res16,res16);
          res[j] = res16;
-         /*printf ("%d\n", (int)res[j]);*/
+         //printf ("%d\n", (int)res[j]);
       }
    }
 
 }
 #endif
-
+*/
 #ifndef OVERRIDE_TARGET_UPDATE
 static inline void target_update(spx_word16_t *t, spx_word16_t g, spx_word16_t *r, int len)
 {
