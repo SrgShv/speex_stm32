@@ -5,7 +5,7 @@
 **
 **********************************************************************/
 /*
-   Last committed:     $Revision: 00 $
+   Last committed:     $Revision: V1.0 R-alfa
    Last changed by:    $Author: Serhii Shvets
    Last changed date:  $Date: April 13, 2014
    ID:                 $Id:  $
@@ -174,7 +174,7 @@ void IRQ_mic(WORD *bff, WORD sz) // Ft = 500Hz
 			//tmp /= 3;
 			putWord(tmp);
 		};
-		debugBlinkRedLed(500);
+		//debugBlinkRedLed(500);
 	};
 }
 
