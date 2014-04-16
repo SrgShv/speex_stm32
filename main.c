@@ -159,20 +159,15 @@ void IRQ_mic(WORD *bff, WORD sz) // Ft = 500Hz
 	{
 		for(i=0; i<sz; i++)
 		{
-			if(bff[i] < 0x7FFF)
-			{
-				tmp = (signed short)0x7FFF - (signed short)bff[i];
-			}
-			else if (bff[i] == 0x7FFF)
-			{
-				tmp = 0;
-			}
-			else
-			{
-				tmp = (signed short)bff[i] - (signed short)0x7FFF;
-			};
-			//tmp /= 3;
+			tmp = (signed short)bff[i];
+
+			//tmp /= 10;
+			tmp /= 2;
+
+			tmp = limit(tmp);
+
 			putWord(tmp);
+			//putWord((signed short)(bff[i]));
 		};
 		//debugBlinkRedLed(500);
 	};
@@ -180,9 +175,10 @@ void IRQ_mic(WORD *bff, WORD sz) // Ft = 500Hz
 
 void IRQ_play(void)
 {
-	static short tmpd = 0;
+	static signed short tmpd = 0;
    static char oddFlgG = 0;
    static WORD iPCM = 0;
+   WORD tmp;
 
    if(oddFlgG == 0)
    {
@@ -201,8 +197,13 @@ void IRQ_play(void)
    else oddFlgG = 0;
 
    //debugBlinkBlueLed(16000);
+   //tmpd /= 8;
 
-   sendSample(tmpd/3);
+   //tmp = (WORD)(tmpd + (signed short)(0x7FFF));
+	//tmpd -= 32767;
+	tmp = (WORD)(tmpd);
+	//tmp = (WORD)(tmpd);
+   sendSample(tmp);
    //sendSample(0);
 }
 
@@ -215,6 +216,82 @@ void getFromFileSpx(BYTE *pack)
 		if(cnt < male_voice_len) pack[i] = male_voice[cnt++];
 	};
 	if(++fileCntr >= male_voice_frames) fileCntr = 0;
+}
+
+void initLimiter(void)
+{
+    short i;
+    int tmp;
+    //slim.Utrs = 14000;
+    //slim.Ulim = 20000;
+    slim.Utrs = 12000;
+    slim.Ulim = 16000;
+
+    tmp = (slim.Ulim - slim.Utrs)/LIM_N;
+    slim.K[0] = MULT_L1;
+    for(i=1; i<LIM_N; i++)
+    {
+        slim.K[i] = (slim.K[i-1]*MULT_L1)/MULT_L0;
+    };
+
+    slim.Uo[0] = slim.Utrs + tmp;
+    for(i=1; i<LIM_N; i++)
+    {
+        slim.Uo[i] = slim.Uo[i-1] + tmp;
+    };
+
+    slim.Ui[0] = (slim.K[0]*tmp)/10000 + slim.Utrs;
+    for(i=1; i<LIM_N; i++)
+    {
+        slim.Ui[i] = slim.Ui[i-1] + (tmp*slim.K[i])/10000;
+    };
+}
+
+signed short limit(signed short dIn)
+{
+	signed short res = dIn;
+	signed int tdata = (signed int)dIn;
+	short i = 0;
+
+	if(tdata > 16000)
+	{
+		if((dIn < slim.Ui[0]) && (dIn > slim.Utrs))
+		{
+			res = (signed short)((((tdata - slim.Utrs)*10000)/slim.K[i]) + slim.Utrs);
+		}
+		else
+		{
+			for(i=1; i<LIM_N; i++)
+			{
+				if((dIn < slim.Ui[i]) && (dIn > slim.Ui[i-1]))
+				{
+					res = (signed short)((((tdata - slim.Ui[i-1])*10000)/slim.K[i]) + slim.Uo[i-1]);
+					break;
+				};
+			};
+		};
+	}
+	else if(tdata < -16000)
+	{
+		if((dIn > -slim.Ui[0]) && (dIn < -slim.Utrs))
+		{
+			res = (signed short)((((tdata + slim.Utrs)*10000)/slim.K[i]) - slim.Utrs);
+		}
+		else
+		{
+			for(i=1; i<LIM_N; i++)
+			{
+				if((dIn > -slim.Ui[i]) && (dIn < -slim.Ui[i-1]))
+				{
+					res = (signed short)((((tdata + slim.Ui[i-1])*10000)/slim.K[i]) - slim.Uo[i-1]);
+					break;
+				};
+			};
+		};
+	}
+	else res = (signed short)tdata;
+
+	return res;
 }
 
 int main(void)
@@ -243,6 +320,8 @@ int main(void)
 
 
 	SystemCoreClockUpdate();
+
+	initLimiter();
 
 	sendSample(0);
 

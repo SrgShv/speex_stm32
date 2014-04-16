@@ -160,6 +160,7 @@ errno               0x4               c:/codest/bin/../lib/gcc/arm-none-eabi/4.8
 obits               0x24              ..\obj\codec.o
 in_short            0x140             ..\obj\codec.o
 spx_data            0x14              ..\obj\main.o
+slim                0x44              ..\obj\SndPlay.o
 out_short           0x140             ..\obj\codec.o
 RecBuf1             0x20              ..\obj\SndMic.o
 RecBuf              0x20              ..\obj\SndMic.o
@@ -440,6 +441,10 @@ Discarded input sections
                 0x00000000       0x20 ..\obj\stm32f4xx_rcc.o
  .text          0x00000000        0x0 ..\obj\codec.o
  .data          0x00000000        0x0 ..\obj\codec.o
+ .text.deleteEncoder
+                0x00000000        0xc ..\obj\codec.o
+ .text.deleteDecoder
+                0x00000000        0xc ..\obj\codec.o
  .text          0x00000000        0x0 ..\obj\sb_celp.o
  .data          0x00000000        0x0 ..\obj\sb_celp.o
  .bss           0x00000000        0x0 ..\obj\sb_celp.o
@@ -1143,7 +1148,7 @@ Linker script and memory map
 
                 0x20020000                _eram = 0x20020000
 
-.text           0x08000000    0x167b0
+.text           0x08000000    0x16b88
  *(.isr_vector .isr_vector.*)
  .isr_vector    0x08000000      0x188 ..\obj\startup_stm32f4xx.o
                 0x08000000                g_pfnVectors
@@ -1401,607 +1406,612 @@ Linker script and memory map
  .text.IRQ_timer
                 0x08003828        0xc ..\obj\main.o
                 0x08003828                IRQ_timer
- .text.IRQ_mic  0x08003834       0x98 ..\obj\main.o
+ .text.IRQ_mic  0x08003834       0x68 ..\obj\main.o
                 0x08003834                IRQ_mic
  .text.IRQ_play
-                0x080038cc      0x120 ..\obj\main.o
-                0x080038cc                IRQ_play
- .text.main     0x080039ec      0x15c ..\obj\main.o
-                0x080039ec                main
+                0x0800389c      0x114 ..\obj\main.o
+                0x0800389c                IRQ_play
+ .text.initLimiter
+                0x080039b0      0x1b0 ..\obj\main.o
+                0x080039b0                initLimiter
+ .text.limit    0x08003b60      0x260 ..\obj\main.o
+                0x08003b60                limit
+ .text.main     0x08003dc0      0x160 ..\obj\main.o
+                0x08003dc0                main
  .text.RCC_PLLI2SConfig
-                0x08003b48       0x2c ..\obj\stm32f4xx_rcc.o
-                0x08003b48                RCC_PLLI2SConfig
+                0x08003f20       0x2c ..\obj\stm32f4xx_rcc.o
+                0x08003f20                RCC_PLLI2SConfig
  .text.RCC_PLLI2SCmd
-                0x08003b74       0x20 ..\obj\stm32f4xx_rcc.o
-                0x08003b74                RCC_PLLI2SCmd
+                0x08003f4c       0x20 ..\obj\stm32f4xx_rcc.o
+                0x08003f4c                RCC_PLLI2SCmd
  .text.RCC_GetClocksFreq
-                0x08003b94      0x1a8 ..\obj\stm32f4xx_rcc.o
-                0x08003b94                RCC_GetClocksFreq
+                0x08003f6c      0x1a8 ..\obj\stm32f4xx_rcc.o
+                0x08003f6c                RCC_GetClocksFreq
  .text.RCC_AHB1PeriphClockCmd
-                0x08003d3c       0x50 ..\obj\stm32f4xx_rcc.o
-                0x08003d3c                RCC_AHB1PeriphClockCmd
+                0x08004114       0x50 ..\obj\stm32f4xx_rcc.o
+                0x08004114                RCC_AHB1PeriphClockCmd
  .text.RCC_APB1PeriphClockCmd
-                0x08003d8c       0x50 ..\obj\stm32f4xx_rcc.o
-                0x08003d8c                RCC_APB1PeriphClockCmd
+                0x08004164       0x50 ..\obj\stm32f4xx_rcc.o
+                0x08004164                RCC_APB1PeriphClockCmd
  .text.RCC_APB1PeriphResetCmd
-                0x08003ddc       0x50 ..\obj\stm32f4xx_rcc.o
-                0x08003ddc                RCC_APB1PeriphResetCmd
+                0x080041b4       0x50 ..\obj\stm32f4xx_rcc.o
+                0x080041b4                RCC_APB1PeriphResetCmd
  .text.RCC_APB2PeriphResetCmd
-                0x08003e2c       0x50 ..\obj\stm32f4xx_rcc.o
-                0x08003e2c                RCC_APB2PeriphResetCmd
+                0x08004204       0x50 ..\obj\stm32f4xx_rcc.o
+                0x08004204                RCC_APB2PeriphResetCmd
  .text.createEncoder
-                0x08003e7c       0x68 ..\obj\codec.o
-                0x08003e7c                createEncoder
+                0x08004254       0x68 ..\obj\codec.o
+                0x08004254                createEncoder
  .text.encodeSPEEX
-                0x08003ee4       0x54 ..\obj\codec.o
-                0x08003ee4                encodeSPEEX
+                0x080042bc       0x54 ..\obj\codec.o
+                0x080042bc                encodeSPEEX
  .text.createDecoder
-                0x08003f38       0x2c ..\obj\codec.o
-                0x08003f38                createDecoder
+                0x08004310       0x2c ..\obj\codec.o
+                0x08004310                createDecoder
  .text.decodeSPEEX
-                0x08003f64       0x54 ..\obj\codec.o
-                0x08003f64                decodeSPEEX
+                0x0800433c       0x54 ..\obj\codec.o
+                0x0800433c                decodeSPEEX
  .text._spx_lpc
-                0x08003fb8      0x1dc ..\obj\lpc.o
-                0x08003fb8                _spx_lpc
+                0x08004390      0x1dc ..\obj\lpc.o
+                0x08004390                _spx_lpc
  .text._spx_autocorr
-                0x08004194      0x108 ..\obj\lpc.o
-                0x08004194                _spx_autocorr
+                0x0800456c      0x108 ..\obj\lpc.o
+                0x0800456c                _spx_autocorr
  .text.scal_quant
-                0x0800429c       0x48 ..\obj\vq.o
-                0x0800429c                scal_quant
+                0x08004674       0x48 ..\obj\vq.o
+                0x08004674                scal_quant
  .text.scal_quant32
-                0x080042e4       0x40 ..\obj\vq.o
-                0x080042e4                scal_quant32
+                0x080046bc       0x40 ..\obj\vq.o
+                0x080046bc                scal_quant32
  .text.target_update
-                0x08004324       0x64 ..\obj\cb_search.o
+                0x080046fc       0x64 ..\obj\cb_search.o
  .text.split_cb_search_shape_sign
-                0x08004388      0xd34 ..\obj\cb_search.o
-                0x08004388                split_cb_search_shape_sign
+                0x08004760      0xd34 ..\obj\cb_search.o
+                0x08004760                split_cb_search_shape_sign
  .text.split_cb_shape_sign_unquant
-                0x080050bc      0x190 ..\obj\cb_search.o
-                0x080050bc                split_cb_shape_sign_unquant
+                0x08005494      0x190 ..\obj\cb_search.o
+                0x08005494                split_cb_shape_sign_unquant
  .text.noise_codebook_quant
-                0x0800524c       0x9c ..\obj\cb_search.o
-                0x0800524c                noise_codebook_quant
+                0x08005624       0x9c ..\obj\cb_search.o
+                0x08005624                noise_codebook_quant
  .text.spx_ilog4
-                0x080052e8       0x64 ..\obj\lsp.o
+                0x080056c0       0x64 ..\obj\lsp.o
  .text.spx_sqrt
-                0x0800534c       0xbc ..\obj\lsp.o
+                0x08005724       0xbc ..\obj\lsp.o
  .text.spx_acos
-                0x08005408       0xa0 ..\obj\lsp.o
- .text.spx_cos  0x080054a8      0x100 ..\obj\lsp.o
+                0x080057e0       0xa0 ..\obj\lsp.o
+ .text.spx_cos  0x08005880      0x100 ..\obj\lsp.o
  .text.cheb_poly_eva
-                0x080055a8       0xd0 ..\obj\lsp.o
+                0x08005980       0xd0 ..\obj\lsp.o
  .text.lpc_to_lsp
-                0x08005678      0x400 ..\obj\lsp.o
-                0x08005678                lpc_to_lsp
+                0x08005a50      0x400 ..\obj\lsp.o
+                0x08005a50                lpc_to_lsp
  .text.lsp_to_lpc
-                0x08005a78      0x5cc ..\obj\lsp.o
-                0x08005a78                lsp_to_lpc
+                0x08005e50      0x5cc ..\obj\lsp.o
+                0x08005e50                lsp_to_lpc
  .text.lsp_enforce_margin
-                0x08006044      0x128 ..\obj\lsp.o
-                0x08006044                lsp_enforce_margin
+                0x0800641c      0x128 ..\obj\lsp.o
+                0x0800641c                lsp_enforce_margin
  .text.lsp_interpolate
-                0x0800616c       0x90 ..\obj\lsp.o
-                0x0800616c                lsp_interpolate
+                0x08006544       0x90 ..\obj\lsp.o
+                0x08006544                lsp_interpolate
  .text.GPIO_Init
-                0x080061fc      0x11c ..\obj\stm32f4xx_gpio.o
-                0x080061fc                GPIO_Init
+                0x080065d4      0x11c ..\obj\stm32f4xx_gpio.o
+                0x080065d4                GPIO_Init
  .text.GPIO_WriteBit
-                0x08006318       0x30 ..\obj\stm32f4xx_gpio.o
-                0x08006318                GPIO_WriteBit
+                0x080066f0       0x30 ..\obj\stm32f4xx_gpio.o
+                0x080066f0                GPIO_WriteBit
  .text.GPIO_PinAFConfig
-                0x08006348       0x8c ..\obj\stm32f4xx_gpio.o
-                0x08006348                GPIO_PinAFConfig
+                0x08006720       0x8c ..\obj\stm32f4xx_gpio.o
+                0x08006720                GPIO_PinAFConfig
  .text.SystemInit
-                0x080063d4       0xac ..\obj\system_stm32f4xx.o
-                0x080063d4                SystemInit
+                0x080067ac       0xac ..\obj\system_stm32f4xx.o
+                0x080067ac                SystemInit
  .text.SystemCoreClockUpdate
-                0x08006480      0x154 ..\obj\system_stm32f4xx.o
-                0x08006480                SystemCoreClockUpdate
+                0x08006858      0x154 ..\obj\system_stm32f4xx.o
+                0x08006858                SystemCoreClockUpdate
  .text.SetSysClock
-                0x080065d4      0x17c ..\obj\system_stm32f4xx.o
- .text._sbrk    0x08006750       0x5c ..\obj\syscalls.o
-                0x08006750                _sbrk
- .text._close   0x080067ac       0x18 ..\obj\syscalls.o
-                0x080067ac                _close
- .text._fstat   0x080067c4       0x20 ..\obj\syscalls.o
-                0x080067c4                _fstat
- .text._isatty  0x080067e4       0x18 ..\obj\syscalls.o
-                0x080067e4                _isatty
- .text._lseek   0x080067fc       0x1c ..\obj\syscalls.o
-                0x080067fc                _lseek
- .text._read    0x08006818       0x1c ..\obj\syscalls.o
-                0x08006818                _read
- .text._write   0x08006834       0x1c ..\obj\syscalls.o
-                0x08006834                _write
- .text          0x08006850      0x2b4 ..\obj\filters_cortexM3.o
-                0x08006850                filter_mem16
-                0x08006976                iir_mem16
-                0x08006a40                fir_mem16
+                0x080069ac      0x17c ..\obj\system_stm32f4xx.o
+ .text._sbrk    0x08006b28       0x5c ..\obj\syscalls.o
+                0x08006b28                _sbrk
+ .text._close   0x08006b84       0x18 ..\obj\syscalls.o
+                0x08006b84                _close
+ .text._fstat   0x08006b9c       0x20 ..\obj\syscalls.o
+                0x08006b9c                _fstat
+ .text._isatty  0x08006bbc       0x18 ..\obj\syscalls.o
+                0x08006bbc                _isatty
+ .text._lseek   0x08006bd4       0x1c ..\obj\syscalls.o
+                0x08006bd4                _lseek
+ .text._read    0x08006bf0       0x1c ..\obj\syscalls.o
+                0x08006bf0                _read
+ .text._write   0x08006c0c       0x1c ..\obj\syscalls.o
+                0x08006c0c                _write
+ .text          0x08006c28      0x2b4 ..\obj\filters_cortexM3.o
+                0x08006c28                filter_mem16
+                0x08006d4e                iir_mem16
+                0x08006e18                fir_mem16
  .text.initGPIO_LED
-                0x08006b04       0x3c ..\obj\debugLeds.o
-                0x08006b04                initGPIO_LED
+                0x08006edc       0x3c ..\obj\debugLeds.o
+                0x08006edc                initGPIO_LED
  .text.debugBlinkBlueLed
-                0x08006b40       0x88 ..\obj\debugLeds.o
-                0x08006b40                debugBlinkBlueLed
+                0x08006f18       0x88 ..\obj\debugLeds.o
+                0x08006f18                debugBlinkBlueLed
  .text.debugBlinkGreenLed
-                0x08006bc8       0x88 ..\obj\debugLeds.o
-                0x08006bc8                debugBlinkGreenLed
+                0x08006fa0       0x88 ..\obj\debugLeds.o
+                0x08006fa0                debugBlinkGreenLed
  .text.spx_ilog4
-                0x08006c50       0x64 ..\obj\nb_celp.o
+                0x08007028       0x64 ..\obj\nb_celp.o
  .text.speex_rand
-                0x08006cb4       0x5c ..\obj\nb_celp.o
+                0x0800708c       0x5c ..\obj\nb_celp.o
  .text.spx_sqrt
-                0x08006d10       0xbc ..\obj\nb_celp.o
+                0x080070e8       0xbc ..\obj\nb_celp.o
  .text.speex_alloc
-                0x08006dcc       0x1c ..\obj\nb_celp.o
+                0x080071a4       0x1c ..\obj\nb_celp.o
  .text.speex_alloc_scratch
-                0x08006de8       0x1c ..\obj\nb_celp.o
+                0x080071c0       0x1c ..\obj\nb_celp.o
  .text.speex_free
-                0x08006e04       0x14 ..\obj\nb_celp.o
+                0x080071dc       0x14 ..\obj\nb_celp.o
  .text.speex_free_scratch
-                0x08006e18       0x14 ..\obj\nb_celp.o
+                0x080071f0       0x14 ..\obj\nb_celp.o
  .text.speex_warning_int
-                0x08006e2c       0x30 ..\obj\nb_celp.o
+                0x08007204       0x30 ..\obj\nb_celp.o
  .text.speex_notify
-                0x08006e5c       0x2c ..\obj\nb_celp.o
+                0x08007234       0x2c ..\obj\nb_celp.o
  .text.nb_encoder_init
-                0x08006e88      0x2e4 ..\obj\nb_celp.o
-                0x08006e88                nb_encoder_init
+                0x08007260      0x2e4 ..\obj\nb_celp.o
+                0x08007260                nb_encoder_init
  .text.nb_encoder_destroy
-                0x0800716c       0xb4 ..\obj\nb_celp.o
-                0x0800716c                nb_encoder_destroy
+                0x08007544       0xb4 ..\obj\nb_celp.o
+                0x08007544                nb_encoder_destroy
  .text.nb_encode
-                0x08007220     0x1604 ..\obj\nb_celp.o
-                0x08007220                nb_encode
+                0x080075f8     0x1604 ..\obj\nb_celp.o
+                0x080075f8                nb_encode
  .text.nb_decoder_init
-                0x08008824      0x200 ..\obj\nb_celp.o
-                0x08008824                nb_decoder_init
+                0x08008bfc      0x200 ..\obj\nb_celp.o
+                0x08008bfc                nb_decoder_init
  .text.nb_decoder_destroy
-                0x08008a24       0x54 ..\obj\nb_celp.o
-                0x08008a24                nb_decoder_destroy
+                0x08008dfc       0x54 ..\obj\nb_celp.o
+                0x08008dfc                nb_decoder_destroy
  .text.nb_decode_lost
-                0x08008a78      0x2b0 ..\obj\nb_celp.o
+                0x08008e50      0x2b0 ..\obj\nb_celp.o
  .text.nb_decode
-                0x08008d28     0x159c ..\obj\nb_celp.o
-                0x08008d28                nb_decode
+                0x08009100     0x159c ..\obj\nb_celp.o
+                0x08009100                nb_decode
  .text.nb_encoder_ctl
-                0x0800a2c4      0x678 ..\obj\nb_celp.o
-                0x0800a2c4                nb_encoder_ctl
+                0x0800a69c      0x678 ..\obj\nb_celp.o
+                0x0800a69c                nb_encoder_ctl
  .text.nb_decoder_ctl
-                0x0800a93c      0x4e0 ..\obj\nb_celp.o
-                0x0800a93c                nb_decoder_ctl
+                0x0800ad14      0x4e0 ..\obj\nb_celp.o
+                0x0800ad14                nb_decoder_ctl
  .text.SPI_I2S_DeInit
-                0x0800ae1c       0x78 ..\obj\stm32f4xx_spi.o
-                0x0800ae1c                SPI_I2S_DeInit
+                0x0800b1f4       0x78 ..\obj\stm32f4xx_spi.o
+                0x0800b1f4                SPI_I2S_DeInit
  .text.I2S_Init
-                0x0800ae94      0x1d4 ..\obj\stm32f4xx_spi.o
-                0x0800ae94                I2S_Init
- .text.I2S_Cmd  0x0800b068       0x40 ..\obj\stm32f4xx_spi.o
-                0x0800b068                I2S_Cmd
+                0x0800b26c      0x1d4 ..\obj\stm32f4xx_spi.o
+                0x0800b26c                I2S_Init
+ .text.I2S_Cmd  0x0800b440       0x40 ..\obj\stm32f4xx_spi.o
+                0x0800b440                I2S_Cmd
  .text.SPI_I2S_ReceiveData
-                0x0800b0a8       0x1c ..\obj\stm32f4xx_spi.o
-                0x0800b0a8                SPI_I2S_ReceiveData
+                0x0800b480       0x1c ..\obj\stm32f4xx_spi.o
+                0x0800b480                SPI_I2S_ReceiveData
  .text.SPI_I2S_ITConfig
-                0x0800b0c4       0x60 ..\obj\stm32f4xx_spi.o
-                0x0800b0c4                SPI_I2S_ITConfig
+                0x0800b49c       0x60 ..\obj\stm32f4xx_spi.o
+                0x0800b49c                SPI_I2S_ITConfig
  .text.SPI_I2S_GetITStatus
-                0x0800b124       0x78 ..\obj\stm32f4xx_spi.o
-                0x0800b124                SPI_I2S_GetITStatus
+                0x0800b4fc       0x78 ..\obj\stm32f4xx_spi.o
+                0x0800b4fc                SPI_I2S_GetITStatus
  .text.spx_ilog4
-                0x0800b19c       0x64 ..\obj\ltp.o
+                0x0800b574       0x64 ..\obj\ltp.o
  .text.spx_sqrt
-                0x0800b200       0xbc ..\obj\ltp.o
+                0x0800b5d8       0xbc ..\obj\ltp.o
  .text.pitch_gain_search_3tap_vq
-                0x0800b2bc      0x36c ..\obj\ltp.o
-                0x0800b2bc                pitch_gain_search_3tap_vq
+                0x0800b694      0x36c ..\obj\ltp.o
+                0x0800b694                pitch_gain_search_3tap_vq
  .text.pitch_xcorr
-                0x0800b628       0x4c ..\obj\ltp.o
-                0x0800b628                pitch_xcorr
+                0x0800ba00       0x4c ..\obj\ltp.o
+                0x0800ba00                pitch_xcorr
  .text.open_loop_nbest_pitch
-                0x0800b674      0x568 ..\obj\ltp.o
-                0x0800b674                open_loop_nbest_pitch
+                0x0800ba4c      0x568 ..\obj\ltp.o
+                0x0800ba4c                open_loop_nbest_pitch
  .text.pitch_gain_search_3tap
-                0x0800bbdc      0x988 ..\obj\ltp.o
+                0x0800bfb4      0x988 ..\obj\ltp.o
  .text.pitch_search_3tap
-                0x0800c564      0x380 ..\obj\ltp.o
-                0x0800c564                pitch_search_3tap
+                0x0800c93c      0x380 ..\obj\ltp.o
+                0x0800c93c                pitch_search_3tap
  .text.pitch_unquant_3tap
-                0x0800c8e4      0x2b4 ..\obj\ltp.o
-                0x0800c8e4                pitch_unquant_3tap
+                0x0800ccbc      0x2b4 ..\obj\ltp.o
+                0x0800ccbc                pitch_unquant_3tap
  .text.I2C_DeInit
-                0x0800cb98       0x78 ..\obj\stm32f4xx_i2c.o
-                0x0800cb98                I2C_DeInit
+                0x0800cf70       0x78 ..\obj\stm32f4xx_i2c.o
+                0x0800cf70                I2C_DeInit
  .text.I2C_Init
-                0x0800cc10      0x18c ..\obj\stm32f4xx_i2c.o
-                0x0800cc10                I2C_Init
- .text.I2C_Cmd  0x0800cd9c       0x40 ..\obj\stm32f4xx_i2c.o
-                0x0800cd9c                I2C_Cmd
+                0x0800cfe8      0x18c ..\obj\stm32f4xx_i2c.o
+                0x0800cfe8                I2C_Init
+ .text.I2C_Cmd  0x0800d174       0x40 ..\obj\stm32f4xx_i2c.o
+                0x0800d174                I2C_Cmd
  .text.I2C_GenerateSTART
-                0x0800cddc       0x40 ..\obj\stm32f4xx_i2c.o
-                0x0800cddc                I2C_GenerateSTART
+                0x0800d1b4       0x40 ..\obj\stm32f4xx_i2c.o
+                0x0800d1b4                I2C_GenerateSTART
  .text.I2C_GenerateSTOP
-                0x0800ce1c       0x40 ..\obj\stm32f4xx_i2c.o
-                0x0800ce1c                I2C_GenerateSTOP
+                0x0800d1f4       0x40 ..\obj\stm32f4xx_i2c.o
+                0x0800d1f4                I2C_GenerateSTOP
  .text.I2C_Send7bitAddress
-                0x0800ce5c       0x3c ..\obj\stm32f4xx_i2c.o
-                0x0800ce5c                I2C_Send7bitAddress
+                0x0800d234       0x3c ..\obj\stm32f4xx_i2c.o
+                0x0800d234                I2C_Send7bitAddress
  .text.I2C_AcknowledgeConfig
-                0x0800ce98       0x40 ..\obj\stm32f4xx_i2c.o
-                0x0800ce98                I2C_AcknowledgeConfig
+                0x0800d270       0x40 ..\obj\stm32f4xx_i2c.o
+                0x0800d270                I2C_AcknowledgeConfig
  .text.I2C_SendData
-                0x0800ced8       0x20 ..\obj\stm32f4xx_i2c.o
-                0x0800ced8                I2C_SendData
+                0x0800d2b0       0x20 ..\obj\stm32f4xx_i2c.o
+                0x0800d2b0                I2C_SendData
  .text.I2C_ReceiveData
-                0x0800cef8       0x1c ..\obj\stm32f4xx_i2c.o
-                0x0800cef8                I2C_ReceiveData
+                0x0800d2d0       0x1c ..\obj\stm32f4xx_i2c.o
+                0x0800d2d0                I2C_ReceiveData
  .text.I2C_CheckEvent
-                0x0800cf14       0x60 ..\obj\stm32f4xx_i2c.o
-                0x0800cf14                I2C_CheckEvent
+                0x0800d2ec       0x60 ..\obj\stm32f4xx_i2c.o
+                0x0800d2ec                I2C_CheckEvent
  .text.I2C_GetFlagStatus
-                0x0800cf74       0x68 ..\obj\stm32f4xx_i2c.o
-                0x0800cf74                I2C_GetFlagStatus
+                0x0800d34c       0x68 ..\obj\stm32f4xx_i2c.o
+                0x0800d34c                I2C_GetFlagStatus
  .text.I2C_ClearFlag
-                0x0800cfdc       0x2c ..\obj\stm32f4xx_i2c.o
-                0x0800cfdc                I2C_ClearFlag
+                0x0800d3b4       0x2c ..\obj\stm32f4xx_i2c.o
+                0x0800d3b4                I2C_ClearFlag
  .text.NVIC_PriorityGroupConfig
-                0x0800d008       0x28 ..\obj\misc.o
-                0x0800d008                NVIC_PriorityGroupConfig
+                0x0800d3e0       0x28 ..\obj\misc.o
+                0x0800d3e0                NVIC_PriorityGroupConfig
  .text.NVIC_Init
-                0x0800d030       0xcc ..\obj\misc.o
-                0x0800d030                NVIC_Init
+                0x0800d408       0xcc ..\obj\misc.o
+                0x0800d408                NVIC_Init
  .text.vbr_init
-                0x0800d0fc       0xac ..\obj\vbr.o
-                0x0800d0fc                vbr_init
+                0x0800d4d4       0xac ..\obj\vbr.o
+                0x0800d4d4                vbr_init
  .text.vbr_destroy
-                0x0800d1a8       0x14 ..\obj\vbr.o
-                0x0800d1a8                vbr_destroy
- .text          0x0800d1bc       0xaa ..\obj\vq_cortexm3.o
-                0x0800d1bc                vq_nbest
- *fill*         0x0800d266        0x2 
+                0x0800d580       0x14 ..\obj\vbr.o
+                0x0800d580                vbr_destroy
+ .text          0x0800d594       0xaa ..\obj\vq_cortexm3.o
+                0x0800d594                vq_nbest
+ *fill*         0x0800d63e        0x2 
  .text.TIM_TimeBaseInit
-                0x0800d268       0xec ..\obj\stm32f4xx_tim.o
-                0x0800d268                TIM_TimeBaseInit
+                0x0800d640       0xec ..\obj\stm32f4xx_tim.o
+                0x0800d640                TIM_TimeBaseInit
  .text.TIM_TimeBaseStructInit
-                0x0800d354       0x34 ..\obj\stm32f4xx_tim.o
-                0x0800d354                TIM_TimeBaseStructInit
- .text.TIM_Cmd  0x0800d388       0x40 ..\obj\stm32f4xx_tim.o
-                0x0800d388                TIM_Cmd
+                0x0800d72c       0x34 ..\obj\stm32f4xx_tim.o
+                0x0800d72c                TIM_TimeBaseStructInit
+ .text.TIM_Cmd  0x0800d760       0x40 ..\obj\stm32f4xx_tim.o
+                0x0800d760                TIM_Cmd
  .text.TIM_ITConfig
-                0x0800d3c8       0x48 ..\obj\stm32f4xx_tim.o
-                0x0800d3c8                TIM_ITConfig
+                0x0800d7a0       0x48 ..\obj\stm32f4xx_tim.o
+                0x0800d7a0                TIM_ITConfig
  .text.TIM_GetITStatus
-                0x0800d410       0x54 ..\obj\stm32f4xx_tim.o
-                0x0800d410                TIM_GetITStatus
+                0x0800d7e8       0x54 ..\obj\stm32f4xx_tim.o
+                0x0800d7e8                TIM_GetITStatus
  .text.TIM_ClearITPendingBit
-                0x0800d464       0x20 ..\obj\stm32f4xx_tim.o
-                0x0800d464                TIM_ClearITPendingBit
- *fill*         0x0800d484        0x4 
+                0x0800d83c       0x20 ..\obj\stm32f4xx_tim.o
+                0x0800d83c                TIM_ClearITPendingBit
+ *fill*         0x0800d85c        0x4 
  .text.PDM_Filter_Init
-                0x0800d488      0x108 ..\..\..\libpdmfilter_gcc.a(pdm_filter.o)
-                0x0800d488                PDM_Filter_Init
+                0x0800d860      0x108 ..\..\..\libpdmfilter_gcc.a(pdm_filter.o)
+                0x0800d860                PDM_Filter_Init
  .text.PDM_Filter_64_LSB
-                0x0800d590      0x2e4 ..\..\..\libpdmfilter_gcc.a(pdm_filter.o)
-                0x0800d590                PDM_Filter_64_LSB
- .text          0x0800d874       0xec c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-w_log.o)
-                0x0800d874                log
- .text          0x0800d960      0x3f8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-e_log.o)
-                0x0800d960                __ieee754_log
- .text          0x0800dd58       0x50 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_fpclassify.o)
-                0x0800dd58                __fpclassifyd
- .text          0x0800dda8        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_matherr.o)
-                0x0800dda8                matherr
- .text          0x0800ddac        0xc c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_nan.o)
-                0x0800ddac                nan
- .text          0x0800ddb8      0x370 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_addsubdf3.o)
-                0x0800ddb8                __aeabi_drsub
-                0x0800ddc0                __aeabi_dsub
-                0x0800ddc0                __subdf3
-                0x0800ddc4                __aeabi_dadd
-                0x0800ddc4                __adddf3
-                0x0800e03c                __floatunsidf
-                0x0800e03c                __aeabi_ui2d
-                0x0800e05c                __floatsidf
-                0x0800e05c                __aeabi_i2d
-                0x0800e080                __aeabi_f2d
-                0x0800e080                __extendsfdf2
-                0x0800e0bc                __floatundidf
-                0x0800e0bc                __aeabi_ul2d
-                0x0800e0cc                __floatdidf
-                0x0800e0cc                __aeabi_l2d
- .text          0x0800e128      0x424 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_muldivdf3.o)
-                0x0800e128                __aeabi_dmul
-                0x0800e128                __muldf3
-                0x0800e37c                __divdf3
-                0x0800e37c                __aeabi_ddiv
- .text          0x0800e54c      0x110 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_cmpdf2.o)
-                0x0800e54c                __gtdf2
-                0x0800e54c                __gedf2
-                0x0800e554                __ltdf2
-                0x0800e554                __ledf2
-                0x0800e55c                __nedf2
-                0x0800e55c                __eqdf2
-                0x0800e55c                __cmpdf2
-                0x0800e5d8                __aeabi_cdrcmple
-                0x0800e5e8                __aeabi_cdcmpeq
-                0x0800e5e8                __aeabi_cdcmple
-                0x0800e5f8                __aeabi_dcmpeq
-                0x0800e60c                __aeabi_dcmplt
-                0x0800e620                __aeabi_dcmple
-                0x0800e634                __aeabi_dcmpge
-                0x0800e648                __aeabi_dcmpgt
- .text          0x0800e65c       0x50 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixdfsi.o)
-                0x0800e65c                __aeabi_d2iz
-                0x0800e65c                __fixdfsi
- .text          0x0800e6ac       0x40 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixunsdfsi.o)
-                0x0800e6ac                __aeabi_d2uiz
-                0x0800e6ac                __fixunsdfsi
- .text          0x0800e6ec       0xa0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_truncdfsf2.o)
-                0x0800e6ec                __truncdfsf2
-                0x0800e6ec                __aeabi_d2f
- .text          0x0800e78c      0x2a0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_muldivsf3.o)
-                0x0800e78c                __mulsf3
-                0x0800e78c                __aeabi_fmul
-                0x0800e8f4                __aeabi_fdiv
-                0x0800e8f4                __divsf3
- .text          0x0800ea2c       0xec c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_cmpsf2.o)
-                0x0800ea2c                __gesf2
-                0x0800ea2c                __gtsf2
-                0x0800ea34                __lesf2
-                0x0800ea34                __ltsf2
-                0x0800ea3c                __nesf2
-                0x0800ea3c                __eqsf2
-                0x0800ea3c                __cmpsf2
-                0x0800ea9c                __aeabi_cfrcmple
-                0x0800eaa4                __aeabi_cfcmpeq
-                0x0800eaa4                __aeabi_cfcmple
-                0x0800eab4                __aeabi_fcmpeq
-                0x0800eac8                __aeabi_fcmplt
-                0x0800eadc                __aeabi_fcmple
-                0x0800eaf0                __aeabi_fcmpge
-                0x0800eb04                __aeabi_fcmpgt
- .text          0x0800eb18       0x14 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-calloc.o)
-                0x0800eb18                calloc
- .text          0x0800eb2c       0x64 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-callocr.o)
-                0x0800eb2c                _calloc_r
- .text          0x0800eb90        0xc c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
-                0x0800eb90                __errno
- .text          0x0800eb9c       0x4c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fprintf.o)
-                0x0800eb9c                _fprintf_r
-                0x0800ebbc                fprintf
- .text          0x0800ebe8       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
-                0x0800ebe8                malloc
-                0x0800ebf8                free
- .text          0x0800ec08      0x570 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mallocr.o)
-                0x0800ec08                _malloc_r
- .text          0x0800f178       0xa8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
-                0x0800f178                memcpy
- .text          0x0800f220       0xd0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memmove.o)
-                0x0800f220                memmove
- .text          0x0800f2f0       0xa0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memset.o)
-                0x0800f2f0                memset
- .text          0x0800f390        0x8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mlock.o)
-                0x0800f390                __malloc_lock
-                0x0800f394                __malloc_unlock
- .text          0x0800f398       0x14 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-realloc.o)
-                0x0800f398                realloc
- .text          0x0800f3ac      0x3ec c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-reallocr.o)
-                0x0800f3ac                _realloc_r
- .text          0x0800f798       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
-                0x0800f798                _sbrk_r
- .text          0x0800f7c0     0x15f0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfprintf.o)
-                0x0800f7c0                _vfprintf_r
-                0x08010d18                vfprintf
- .text          0x08010db0       0xe8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wbuf.o)
-                0x08010db0                __swbuf_r
-                0x08010e84                __swbuf
- .text          0x08010e98       0xf8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wsetup.o)
-                0x08010e98                __swsetup_r
- .text          0x08010f90     0x10d8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
-                0x080110dc                _dtoa_r
- .text          0x08012068      0x1d8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fflush.o)
-                0x08012068                __sflush_r
-                0x080121b8                _fflush_r
-                0x08012218                fflush
- .text          0x08012240      0x248 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-findfp.o)
-                0x08012248                _cleanup_r
-                0x08012254                __sfmoreglue
-                0x08012284                _cleanup
-                0x0801229c                __sinit
-                0x080123c0                __sfp
-                0x08012448                __sfp_lock_acquire
-                0x0801244c                __sfp_lock_release
-                0x08012450                __sinit_lock_acquire
-                0x08012454                __sinit_lock_release
-                0x08012458                __fp_lock_all
-                0x08012470                __fp_unlock_all
- .text          0x08012488      0x23c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-freer.o)
-                0x08012488                _malloc_trim_r
-                0x0801252c                _free_r
- .text          0x080126c4       0x94 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fwalk.o)
-                0x080126c4                _fwalk
-                0x0801270c                _fwalk_reent
- .text          0x08012758       0x9c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
-                0x08012758                _setlocale_r
-                0x080127ac                __locale_charset
-                0x080127b8                __locale_mb_cur_max
-                0x080127c4                __locale_msgcharset
-                0x080127cc                __locale_cjk_lang
-                0x080127d0                _localeconv_r
-                0x080127d8                setlocale
-                0x080127ec                localeconv
- .text          0x080127f4       0xe8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-makebuf.o)
-                0x080127f4                __smakebuf_r
- .text          0x080128dc       0x90 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memchr-stub.o)
-                0x080128dc                memchr
- .text          0x0801296c      0x938 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
-                0x0801296c                _Balloc
-                0x080129d8                _Bfree
-                0x08012a10                __multadd
-                0x08012a9c                __s2b
-                0x08012b34                __hi0bits
-                0x08012b70                __lo0bits
-                0x08012bc8                __i2b
-                0x08012bdc                __multiply
-                0x08012d1c                __pow5mult
-                0x08012dd4                __lshift
-                0x08012e8c                __mcmp
-                0x08012ed0                __mdiff
-                0x08012fbc                __ulp
-                0x08013000                __b2d
-                0x080130ac                __d2b
-                0x08013168                __ratio
-                0x080131c8                _mprec_log10
-                0x080131fc                __copybits
-                0x08013244                __any_on
- .text          0x080132a4       0x88 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-stdio.o)
-                0x080132a4                __sread
-                0x080132c8                __seofread
-                0x080132cc                __swrite
-                0x08013304                __sseek
-                0x08013324                __sclose
- .text          0x0801332c      0x23c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-strcmp.o)
-                0x0801332c                strcmp
- .text          0x08013568       0x60 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-strlen.o)
-                0x08013568                strlen
- .text          0x080135c8      0xeb8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfiprintf.o)
-                0x08013640                __sprint_r
-                0x08013658                _vfiprintf_r
-                0x080143e8                vfiprintf
- .text          0x08014480       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o)
-                0x08014480                _write_r
- .text          0x080144ac       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o)
-                0x080144ac                _close_r
- .text          0x080144d4       0xc0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fclose.o)
-                0x080144d4                _fclose_r
-                0x08014584                fclose
- .text          0x08014594      0x124 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fputwc.o)
-                0x08014594                _fputwc_r
-                0x0801465c                fputwc
- .text          0x080146b8       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o)
-                0x080146b8                _fstat_r
- .text          0x080146e0      0x2f4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fvwrite.o)
-                0x080146e0                __sfvwrite_r
- .text          0x080149d4       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o)
-                0x080149d4                _isatty_r
- .text          0x080149fc       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o)
-                0x080149fc                _lseek_r
- .text          0x08014a28       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o)
-                0x08014a28                _read_r
- .text          0x08014a54       0xb4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wcrtomb.o)
-                0x08014a54                _wcrtomb_r
-                0x08014aac                wcrtomb
- .text          0x08014b08       0x48 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wctomb_r.o)
-                0x08014b08                __ascii_wctomb
-                0x08014b20                _wctomb_r
- .text          0x08014b50      0x278 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivsi3.o)
-                0x08014b50                __aeabi_uidiv
-                0x08014b50                __udivsi3
-                0x08014dac                __aeabi_uidivmod
- .text          0x08014dc8        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_dvmd_tls.o)
-                0x08014dc8                __aeabi_idiv0
-                0x08014dc8                __aeabi_ldiv0
- .text          0x08014dcc       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_aeabi_uldivmod.o)
-                0x08014dcc                __aeabi_uldivmod
- .text          0x08014df8       0x60 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(bpabi.o)
-                0x08014df8                __gnu_ldivmod_helper
-                0x08014e28                __gnu_uldivmod_helper
- .text          0x08014e58      0x354 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
-                0x08014e58                __divdi3
- .text          0x080151ac      0x300 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
-                0x080151ac                __udivdi3
+                0x0800d968      0x2e4 ..\..\..\libpdmfilter_gcc.a(pdm_filter.o)
+                0x0800d968                PDM_Filter_64_LSB
+ .text          0x0800dc4c       0xec c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-w_log.o)
+                0x0800dc4c                log
+ .text          0x0800dd38      0x3f8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-e_log.o)
+                0x0800dd38                __ieee754_log
+ .text          0x0800e130       0x50 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_fpclassify.o)
+                0x0800e130                __fpclassifyd
+ .text          0x0800e180        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_matherr.o)
+                0x0800e180                matherr
+ .text          0x0800e184        0xc c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_nan.o)
+                0x0800e184                nan
+ .text          0x0800e190      0x370 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_addsubdf3.o)
+                0x0800e190                __aeabi_drsub
+                0x0800e198                __aeabi_dsub
+                0x0800e198                __subdf3
+                0x0800e19c                __aeabi_dadd
+                0x0800e19c                __adddf3
+                0x0800e414                __floatunsidf
+                0x0800e414                __aeabi_ui2d
+                0x0800e434                __floatsidf
+                0x0800e434                __aeabi_i2d
+                0x0800e458                __aeabi_f2d
+                0x0800e458                __extendsfdf2
+                0x0800e494                __floatundidf
+                0x0800e494                __aeabi_ul2d
+                0x0800e4a4                __floatdidf
+                0x0800e4a4                __aeabi_l2d
+ .text          0x0800e500      0x424 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_muldivdf3.o)
+                0x0800e500                __aeabi_dmul
+                0x0800e500                __muldf3
+                0x0800e754                __divdf3
+                0x0800e754                __aeabi_ddiv
+ .text          0x0800e924      0x110 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_cmpdf2.o)
+                0x0800e924                __gtdf2
+                0x0800e924                __gedf2
+                0x0800e92c                __ltdf2
+                0x0800e92c                __ledf2
+                0x0800e934                __nedf2
+                0x0800e934                __eqdf2
+                0x0800e934                __cmpdf2
+                0x0800e9b0                __aeabi_cdrcmple
+                0x0800e9c0                __aeabi_cdcmpeq
+                0x0800e9c0                __aeabi_cdcmple
+                0x0800e9d0                __aeabi_dcmpeq
+                0x0800e9e4                __aeabi_dcmplt
+                0x0800e9f8                __aeabi_dcmple
+                0x0800ea0c                __aeabi_dcmpge
+                0x0800ea20                __aeabi_dcmpgt
+ .text          0x0800ea34       0x50 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixdfsi.o)
+                0x0800ea34                __aeabi_d2iz
+                0x0800ea34                __fixdfsi
+ .text          0x0800ea84       0x40 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_fixunsdfsi.o)
+                0x0800ea84                __aeabi_d2uiz
+                0x0800ea84                __fixunsdfsi
+ .text          0x0800eac4       0xa0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_truncdfsf2.o)
+                0x0800eac4                __truncdfsf2
+                0x0800eac4                __aeabi_d2f
+ .text          0x0800eb64      0x2a0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_muldivsf3.o)
+                0x0800eb64                __mulsf3
+                0x0800eb64                __aeabi_fmul
+                0x0800eccc                __aeabi_fdiv
+                0x0800eccc                __divsf3
+ .text          0x0800ee04       0xec c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_arm_cmpsf2.o)
+                0x0800ee04                __gesf2
+                0x0800ee04                __gtsf2
+                0x0800ee0c                __lesf2
+                0x0800ee0c                __ltsf2
+                0x0800ee14                __nesf2
+                0x0800ee14                __eqsf2
+                0x0800ee14                __cmpsf2
+                0x0800ee74                __aeabi_cfrcmple
+                0x0800ee7c                __aeabi_cfcmpeq
+                0x0800ee7c                __aeabi_cfcmple
+                0x0800ee8c                __aeabi_fcmpeq
+                0x0800eea0                __aeabi_fcmplt
+                0x0800eeb4                __aeabi_fcmple
+                0x0800eec8                __aeabi_fcmpge
+                0x0800eedc                __aeabi_fcmpgt
+ .text          0x0800eef0       0x14 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-calloc.o)
+                0x0800eef0                calloc
+ .text          0x0800ef04       0x64 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-callocr.o)
+                0x0800ef04                _calloc_r
+ .text          0x0800ef68        0xc c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+                0x0800ef68                __errno
+ .text          0x0800ef74       0x4c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fprintf.o)
+                0x0800ef74                _fprintf_r
+                0x0800ef94                fprintf
+ .text          0x0800efc0       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
+                0x0800efc0                malloc
+                0x0800efd0                free
+ .text          0x0800efe0      0x570 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mallocr.o)
+                0x0800efe0                _malloc_r
+ .text          0x0800f550       0xa8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
+                0x0800f550                memcpy
+ .text          0x0800f5f8       0xd0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memmove.o)
+                0x0800f5f8                memmove
+ .text          0x0800f6c8       0xa0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memset.o)
+                0x0800f6c8                memset
+ .text          0x0800f768        0x8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mlock.o)
+                0x0800f768                __malloc_lock
+                0x0800f76c                __malloc_unlock
+ .text          0x0800f770       0x14 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-realloc.o)
+                0x0800f770                realloc
+ .text          0x0800f784      0x3ec c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-reallocr.o)
+                0x0800f784                _realloc_r
+ .text          0x0800fb70       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
+                0x0800fb70                _sbrk_r
+ .text          0x0800fb98     0x15f0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfprintf.o)
+                0x0800fb98                _vfprintf_r
+                0x080110f0                vfprintf
+ .text          0x08011188       0xe8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wbuf.o)
+                0x08011188                __swbuf_r
+                0x0801125c                __swbuf
+ .text          0x08011270       0xf8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wsetup.o)
+                0x08011270                __swsetup_r
+ .text          0x08011368     0x10d8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
+                0x080114b4                _dtoa_r
+ .text          0x08012440      0x1d8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fflush.o)
+                0x08012440                __sflush_r
+                0x08012590                _fflush_r
+                0x080125f0                fflush
+ .text          0x08012618      0x248 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-findfp.o)
+                0x08012620                _cleanup_r
+                0x0801262c                __sfmoreglue
+                0x0801265c                _cleanup
+                0x08012674                __sinit
+                0x08012798                __sfp
+                0x08012820                __sfp_lock_acquire
+                0x08012824                __sfp_lock_release
+                0x08012828                __sinit_lock_acquire
+                0x0801282c                __sinit_lock_release
+                0x08012830                __fp_lock_all
+                0x08012848                __fp_unlock_all
+ .text          0x08012860      0x23c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-freer.o)
+                0x08012860                _malloc_trim_r
+                0x08012904                _free_r
+ .text          0x08012a9c       0x94 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fwalk.o)
+                0x08012a9c                _fwalk
+                0x08012ae4                _fwalk_reent
+ .text          0x08012b30       0x9c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
+                0x08012b30                _setlocale_r
+                0x08012b84                __locale_charset
+                0x08012b90                __locale_mb_cur_max
+                0x08012b9c                __locale_msgcharset
+                0x08012ba4                __locale_cjk_lang
+                0x08012ba8                _localeconv_r
+                0x08012bb0                setlocale
+                0x08012bc4                localeconv
+ .text          0x08012bcc       0xe8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-makebuf.o)
+                0x08012bcc                __smakebuf_r
+ .text          0x08012cb4       0x90 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memchr-stub.o)
+                0x08012cb4                memchr
+ .text          0x08012d44      0x938 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
+                0x08012d44                _Balloc
+                0x08012db0                _Bfree
+                0x08012de8                __multadd
+                0x08012e74                __s2b
+                0x08012f0c                __hi0bits
+                0x08012f48                __lo0bits
+                0x08012fa0                __i2b
+                0x08012fb4                __multiply
+                0x080130f4                __pow5mult
+                0x080131ac                __lshift
+                0x08013264                __mcmp
+                0x080132a8                __mdiff
+                0x08013394                __ulp
+                0x080133d8                __b2d
+                0x08013484                __d2b
+                0x08013540                __ratio
+                0x080135a0                _mprec_log10
+                0x080135d4                __copybits
+                0x0801361c                __any_on
+ .text          0x0801367c       0x88 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-stdio.o)
+                0x0801367c                __sread
+                0x080136a0                __seofread
+                0x080136a4                __swrite
+                0x080136dc                __sseek
+                0x080136fc                __sclose
+ .text          0x08013704      0x23c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-strcmp.o)
+                0x08013704                strcmp
+ .text          0x08013940       0x60 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-strlen.o)
+                0x08013940                strlen
+ .text          0x080139a0      0xeb8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfiprintf.o)
+                0x08013a18                __sprint_r
+                0x08013a30                _vfiprintf_r
+                0x080147c0                vfiprintf
+ .text          0x08014858       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o)
+                0x08014858                _write_r
+ .text          0x08014884       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o)
+                0x08014884                _close_r
+ .text          0x080148ac       0xc0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fclose.o)
+                0x080148ac                _fclose_r
+                0x0801495c                fclose
+ .text          0x0801496c      0x124 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fputwc.o)
+                0x0801496c                _fputwc_r
+                0x08014a34                fputwc
+ .text          0x08014a90       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o)
+                0x08014a90                _fstat_r
+ .text          0x08014ab8      0x2f4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fvwrite.o)
+                0x08014ab8                __sfvwrite_r
+ .text          0x08014dac       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o)
+                0x08014dac                _isatty_r
+ .text          0x08014dd4       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o)
+                0x08014dd4                _lseek_r
+ .text          0x08014e00       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o)
+                0x08014e00                _read_r
+ .text          0x08014e2c       0xb4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wcrtomb.o)
+                0x08014e2c                _wcrtomb_r
+                0x08014e84                wcrtomb
+ .text          0x08014ee0       0x48 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wctomb_r.o)
+                0x08014ee0                __ascii_wctomb
+                0x08014ef8                _wctomb_r
+ .text          0x08014f28      0x278 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivsi3.o)
+                0x08014f28                __aeabi_uidiv
+                0x08014f28                __udivsi3
+                0x08015184                __aeabi_uidivmod
+ .text          0x080151a0        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_dvmd_tls.o)
+                0x080151a0                __aeabi_idiv0
+                0x080151a0                __aeabi_ldiv0
+ .text          0x080151a4       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_aeabi_uldivmod.o)
+                0x080151a4                __aeabi_uldivmod
+ .text          0x080151d0       0x60 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(bpabi.o)
+                0x080151d0                __gnu_ldivmod_helper
+                0x08015200                __gnu_uldivmod_helper
+ .text          0x08015230      0x354 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
+                0x08015230                __divdi3
+ .text          0x08015584      0x300 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
+                0x08015584                __udivdi3
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x080154ac      0x780 ..\obj\lsp_tables_nb.o
-                0x080154ac                cdbk_nb
-                0x0801572c                cdbk_nb_low1
-                0x0801586c                cdbk_nb_low2
-                0x080159ac                cdbk_nb_high1
-                0x08015aec                cdbk_nb_high2
- .rodata        0x08015c2c       0x64 ..\obj\speex.o
- .rodata        0x08015c90       0x6c ..\obj\filters.o
-                0x08015cd0                shift_filt
- .rodata        0x08015cfc      0x160 ..\obj\bits.o
- .rodata        0x08015e5c      0x1a8 ..\obj\window.o
-                0x08015e5c                lag_window
-                0x08015e74                lpc_window
- .rodata        0x08016004      0x190 ..\obj\nb_celp.o
-                0x08016028                ol_gain_table
-                0x080160a8                exc_gain_quant_scal3_bound
-                0x080160b8                exc_gain_quant_scal3
-                0x080160c8                exc_gain_quant_scal1_bound
-                0x080160cc                exc_gain_quant_scal1
-                0x080160d0                attenuation
- .rodata        0x08016194      0x124 ..\obj\modes.o
-                0x08016284                speex_nb_mode
- .rodata        0x080162b8      0x100 ..\obj\ltp.o
- .rodata        0x080163b8       0x80 ..\obj\gain_table_lbr.o
-                0x080163b8                gain_cdbk_lbr
- .rodata        0x08016438      0x140 ..\obj\exc_10_32_table.o
-                0x08016438                exc_10_32_table
+ .rodata        0x08015884      0x780 ..\obj\lsp_tables_nb.o
+                0x08015884                cdbk_nb
+                0x08015b04                cdbk_nb_low1
+                0x08015c44                cdbk_nb_low2
+                0x08015d84                cdbk_nb_high1
+                0x08015ec4                cdbk_nb_high2
+ .rodata        0x08016004       0x64 ..\obj\speex.o
+ .rodata        0x08016068       0x6c ..\obj\filters.o
+                0x080160a8                shift_filt
+ .rodata        0x080160d4      0x160 ..\obj\bits.o
+ .rodata        0x08016234      0x1a8 ..\obj\window.o
+                0x08016234                lag_window
+                0x0801624c                lpc_window
+ .rodata        0x080163dc      0x190 ..\obj\nb_celp.o
+                0x08016400                ol_gain_table
+                0x08016480                exc_gain_quant_scal3_bound
+                0x08016490                exc_gain_quant_scal3
+                0x080164a0                exc_gain_quant_scal1_bound
+                0x080164a4                exc_gain_quant_scal1
+                0x080164a8                attenuation
+ .rodata        0x0801656c      0x124 ..\obj\modes.o
+                0x0801665c                speex_nb_mode
+ .rodata        0x08016690      0x100 ..\obj\ltp.o
+ .rodata        0x08016790       0x80 ..\obj\gain_table_lbr.o
+                0x08016790                gain_cdbk_lbr
+ .rodata        0x08016810      0x140 ..\obj\exc_10_32_table.o
+                0x08016810                exc_10_32_table
  .rodata.str1.4
-                0x08016578        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-w_log.o)
+                0x08016950        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-w_log.o)
                                   0x8 (size before relaxing)
- .rodata        0x0801657c        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
-                0x0801657c                _global_impure_ptr
+ .rodata        0x08016954        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x08016954                _global_impure_ptr
  .rodata.str1.4
-                0x08016580        0x2 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
+                0x08016958        0x2 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-impure.o)
                                   0x4 (size before relaxing)
- *fill*         0x08016582        0x2 
- .rodata        0x08016584       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfprintf.o)
+ *fill*         0x0801695a        0x2 
+ .rodata        0x0801695c       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfprintf.o)
  .rodata.str1.4
-                0x080165a4       0x42 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfprintf.o)
+                0x0801697c       0x42 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfprintf.o)
                                  0x44 (size before relaxing)
- *fill*         0x080165e6        0x2 
+ *fill*         0x080169be        0x2 
  .rodata.str1.4
-                0x080165e8       0x10 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
+                0x080169c0       0x10 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
                                  0x14 (size before relaxing)
- .rodata        0x080165f8       0x60 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-findfp.o)
-                0x080165f8                __sf_fake_stderr
-                0x08016618                __sf_fake_stdout
-                0x08016638                __sf_fake_stdin
+ .rodata        0x080169d0       0x60 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-findfp.o)
+                0x080169d0                __sf_fake_stderr
+                0x080169f0                __sf_fake_stdout
+                0x08016a10                __sf_fake_stdin
  .rodata.str1.4
-                0x08016658        0xc c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
+                0x08016a30        0xc c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
                                  0x14 (size before relaxing)
- *fill*         0x08016664        0x4 
- .rodata        0x08016668      0x128 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
-                0x08016678                __mprec_tens
-                0x08016740                __mprec_tinytens
-                0x08016768                __mprec_bigtens
- .rodata        0x08016790       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfiprintf.o)
+ *fill*         0x08016a3c        0x4 
+ .rodata        0x08016a40      0x128 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
+                0x08016a50                __mprec_tens
+                0x08016b18                __mprec_tinytens
+                0x08016b40                __mprec_bigtens
+ .rodata        0x08016b68       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfiprintf.o)
  .rodata.str1.4
                 0x00000000       0x30 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfiprintf.o)
 
-.vfp11_veneer   0x080167b0        0x0
+.vfp11_veneer   0x08016b88        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x080167b0        0x0
+.v4_bx          0x08016b88        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x080167b0        0x0
+.iplt           0x08016b88        0x0
  .iplt          0x00000000        0x0 ..\obj\stm32f4xx_syscfg.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM.exidx      0x080167b0        0x8
+.ARM.exidx      0x08016b88        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x080167b0        0x8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
- .ARM.exidx     0x080167b8        0x0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x08016b88        0x8 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x08016b90        0x0 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
 
-.rel.dyn        0x080167b8        0x0
+.rel.dyn        0x08016b90        0x0
  .rel.iplt      0x00000000        0x0 ..\obj\stm32f4xx_syscfg.o
-                0x080167b8                . = ALIGN (0x4)
-                0x080167b8                _etext = .
-                0x080167b8                _sidata = .
+                0x08016b90                . = ALIGN (0x4)
+                0x08016b90                _etext = .
+                0x08016b90                _sidata = .
 
-.data           0x20000000      0x8d4 load address 0x080167b8
+.data           0x20000000      0x8d4 load address 0x08016b90
                 0x20000000                _sdata = .
  *(.data .data.*)
  .data          0x20000000        0x4 ..\obj\SndPlay.o
@@ -2035,10 +2045,10 @@ Linker script and memory map
                 0x200008d4                . = ALIGN (0x4)
                 0x200008d4                _edata = .
 
-.igot.plt       0x200008d4        0x0 load address 0x0801708c
+.igot.plt       0x200008d4        0x0 load address 0x08017464
  .igot.plt      0x00000000        0x0 ..\obj\stm32f4xx_syscfg.o
 
-.bss            0x200008d4     0x12fc load address 0x0801708c
+.bss            0x200008d4     0x1340 load address 0x08017464
                 0x200008d4                _sbss = .
  *(.bss .bss.*)
  .bss           0x200008d4        0x4 ..\obj\SndMic.o
@@ -2062,38 +2072,40 @@ Linker script and memory map
                 0x20000944                __malloc_max_sbrked_mem
                 0x20000948                __malloc_max_total_mem
  *(COMMON)
- COMMON         0x2000094c      0xc1a ..\obj\SndPlay.o
+ COMMON         0x2000094c      0xc5e ..\obj\SndPlay.o
                 0x2000094c                inSpxBff
-                0x20000a1c                pcmbff
-                0x20000de4                buffOUTPCM
- *fill*         0x20001566        0x2 
- COMMON         0x20001568       0xf4 ..\obj\SndMic.o
-                0x20001568                InternalBuffer
-                0x200015e8                RecBuf1
-                0x20001608                RecBuf
-                0x20001628                Filter
- COMMON         0x2000165c      0x294 ..\obj\main.o
-                0x2000165c                pcm_dataA
-                0x2000179c                spx_data
-                0x200017b0                pcm_dataB
- COMMON         0x200018f0      0x2dc ..\obj\codec.o
-                0x200018f0                inbits
-                0x20001914                obits
-                0x20001938                in_short
-                0x20001a78                out_short
-                0x20001bb8                in_byte
- COMMON         0x20001bcc        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
-                0x20001bcc                errno
-                0x20001bd0                . = ALIGN (0x4)
-                0x20001bd0                _ebss = .
+                0x20000a1c                slim
+                0x20000a60                pcmbff
+                0x20000e28                buffOUTPCM
+ *fill*         0x200015aa        0x2 
+ COMMON         0x200015ac       0xf4 ..\obj\SndMic.o
+                0x200015ac                InternalBuffer
+                0x2000162c                RecBuf1
+                0x2000164c                RecBuf
+                0x2000166c                Filter
+ COMMON         0x200016a0      0x294 ..\obj\main.o
+                0x200016a0                pcm_dataA
+                0x200017e0                spx_data
+                0x200017f4                pcm_dataB
+ COMMON         0x20001934      0x2dc ..\obj\codec.o
+                0x20001934                inbits
+                0x20001958                obits
+                0x2000197c                in_short
+                0x20001abc                out_short
+                0x20001bfc                in_byte
+ COMMON         0x20001c10        0x4 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
+                0x20001c10                errno
+                0x20001c14                . = ALIGN (0x4)
+                0x20001c14                _ebss = .
 
-.co_stack       0x20001bd0     0x2000 load address 0x08018388
-                0x20001bd0                . = ALIGN (0x8)
+.co_stack       0x20001c14     0x2004 load address 0x080187a4
+                0x20001c18                . = ALIGN (0x8)
+ *fill*         0x20001c14        0x4 
  *(.co_stack .co_stack.*)
- .co_stack      0x20001bd0     0x2000 ..\obj\startup_stm32f4xx.o
-                0x20001bd0                pulStack
-                0x20003bd0                . = ALIGN (0x4)
-                0x20003bd0                _end = .
+ .co_stack      0x20001c18     0x2000 ..\obj\startup_stm32f4xx.o
+                0x20001c18                pulStack
+                0x20003c18                . = ALIGN (0x4)
+                0x20003c18                _end = .
 LOAD ..\obj\stm32f4xx_syscfg.o
 LOAD ..\obj\speex_callbacks.o
 LOAD ..\obj\SndPlay.o
@@ -2150,81 +2162,81 @@ LOAD c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/
 END GROUP
 OUTPUT(speex_codec.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x12b18
+.debug_info     0x00000000    0x12dcf
  .debug_info    0x00000000      0xc47 ..\obj\speex_callbacks.o
- .debug_info    0x00000c47      0xaaf ..\obj\SndPlay.o
- .debug_info    0x000016f6       0xb9 ..\obj\lsp_tables_nb.o
- .debug_info    0x000017af      0x884 ..\obj\timer.o
- .debug_info    0x00002033     0x121f ..\obj\speex.o
- .debug_info    0x00003252      0xa59 ..\obj\SndMic.o
- .debug_info    0x00003cab      0xf05 ..\obj\quant_lsp.o
- .debug_info    0x00004bb0       0xa1 ..\obj\ltp_cortexM3.o
- .debug_info    0x00004c51       0xed ..\obj\startup_stm32f4xx.o
- .debug_info    0x00004d3e      0xe2f ..\obj\filters.o
- .debug_info    0x00005b6d      0xeb7 ..\obj\bits.o
- .debug_info    0x00006a24      0x5a7 ..\obj\main.o
- .debug_info    0x00006fcb      0xc21 ..\obj\stm32f4xx_rcc.o
- .debug_info    0x00007bec      0x419 ..\obj\codec.o
- .debug_info    0x00008005      0x1a1 ..\obj\lpc.o
- .debug_info    0x000081a6      0x200 ..\obj\vq.o
- .debug_info    0x000083a6      0xf2c ..\obj\cb_search.o
- .debug_info    0x000092d2       0x86 ..\obj\window.o
- .debug_info    0x00009358      0x652 ..\obj\lsp.o
- .debug_info    0x000099aa      0x5d6 ..\obj\stm32f4xx_gpio.o
- .debug_info    0x00009f80      0x566 ..\obj\system_stm32f4xx.o
- .debug_info    0x0000a4e6      0x3ee ..\obj\syscalls.o
- .debug_info    0x0000a8d4       0xa5 ..\obj\filters_cortexM3.o
- .debug_info    0x0000a979      0x4b6 ..\obj\debugLeds.o
- .debug_info    0x0000ae2f     0x2333 ..\obj\nb_celp.o
- .debug_info    0x0000d162      0x815 ..\obj\modes.o
- .debug_info    0x0000d977      0xadb ..\obj\stm32f4xx_spi.o
- .debug_info    0x0000e452     0x1618 ..\obj\ltp.o
- .debug_info    0x0000fa6a      0xac8 ..\obj\stm32f4xx_i2c.o
- .debug_info    0x00010532      0x51c ..\obj\misc.o
- .debug_info    0x00010a4e      0x358 ..\obj\vbr.o
- .debug_info    0x00010da6       0x4e ..\obj\gain_table_lbr.o
- .debug_info    0x00010df4       0xa0 ..\obj\vq_cortexm3.o
- .debug_info    0x00010e94       0x4f ..\obj\exc_10_32_table.o
- .debug_info    0x00010ee3     0x1c35 ..\obj\stm32f4xx_tim.o
+ .debug_info    0x00000c47      0xb15 ..\obj\SndPlay.o
+ .debug_info    0x0000175c       0xb9 ..\obj\lsp_tables_nb.o
+ .debug_info    0x00001815      0x8ea ..\obj\timer.o
+ .debug_info    0x000020ff     0x121f ..\obj\speex.o
+ .debug_info    0x0000331e      0xabf ..\obj\SndMic.o
+ .debug_info    0x00003ddd      0xf05 ..\obj\quant_lsp.o
+ .debug_info    0x00004ce2       0xa1 ..\obj\ltp_cortexM3.o
+ .debug_info    0x00004d83       0xed ..\obj\startup_stm32f4xx.o
+ .debug_info    0x00004e70      0xe2f ..\obj\filters.o
+ .debug_info    0x00005c9f      0xeb7 ..\obj\bits.o
+ .debug_info    0x00006b56      0x6a4 ..\obj\main.o
+ .debug_info    0x000071fa      0xc21 ..\obj\stm32f4xx_rcc.o
+ .debug_info    0x00007e1b      0x43b ..\obj\codec.o
+ .debug_info    0x00008256      0x1a1 ..\obj\lpc.o
+ .debug_info    0x000083f7      0x200 ..\obj\vq.o
+ .debug_info    0x000085f7      0xf2c ..\obj\cb_search.o
+ .debug_info    0x00009523       0x86 ..\obj\window.o
+ .debug_info    0x000095a9      0x652 ..\obj\lsp.o
+ .debug_info    0x00009bfb      0x5d6 ..\obj\stm32f4xx_gpio.o
+ .debug_info    0x0000a1d1      0x566 ..\obj\system_stm32f4xx.o
+ .debug_info    0x0000a737      0x3ee ..\obj\syscalls.o
+ .debug_info    0x0000ab25       0xa5 ..\obj\filters_cortexM3.o
+ .debug_info    0x0000abca      0x51c ..\obj\debugLeds.o
+ .debug_info    0x0000b0e6     0x2333 ..\obj\nb_celp.o
+ .debug_info    0x0000d419      0x815 ..\obj\modes.o
+ .debug_info    0x0000dc2e      0xadb ..\obj\stm32f4xx_spi.o
+ .debug_info    0x0000e709     0x1618 ..\obj\ltp.o
+ .debug_info    0x0000fd21      0xac8 ..\obj\stm32f4xx_i2c.o
+ .debug_info    0x000107e9      0x51c ..\obj\misc.o
+ .debug_info    0x00010d05      0x358 ..\obj\vbr.o
+ .debug_info    0x0001105d       0x4e ..\obj\gain_table_lbr.o
+ .debug_info    0x000110ab       0xa0 ..\obj\vq_cortexm3.o
+ .debug_info    0x0001114b       0x4f ..\obj\exc_10_32_table.o
+ .debug_info    0x0001119a     0x1c35 ..\obj\stm32f4xx_tim.o
 
-.debug_abbrev   0x00000000     0x2f26
+.debug_abbrev   0x00000000     0x2f98
  .debug_abbrev  0x00000000      0x1b8 ..\obj\speex_callbacks.o
- .debug_abbrev  0x000001b8      0x28c ..\obj\SndPlay.o
- .debug_abbrev  0x00000444       0x54 ..\obj\lsp_tables_nb.o
- .debug_abbrev  0x00000498      0x1d3 ..\obj\timer.o
- .debug_abbrev  0x0000066b      0x1d7 ..\obj\speex.o
- .debug_abbrev  0x00000842      0x17c ..\obj\SndMic.o
- .debug_abbrev  0x000009be      0x247 ..\obj\quant_lsp.o
- .debug_abbrev  0x00000c05       0x14 ..\obj\ltp_cortexM3.o
- .debug_abbrev  0x00000c19       0xb0 ..\obj\startup_stm32f4xx.o
- .debug_abbrev  0x00000cc9      0x1ca ..\obj\filters.o
- .debug_abbrev  0x00000e93      0x2d5 ..\obj\bits.o
- .debug_abbrev  0x00001168      0x19f ..\obj\main.o
- .debug_abbrev  0x00001307      0x1e3 ..\obj\stm32f4xx_rcc.o
- .debug_abbrev  0x000014ea      0x155 ..\obj\codec.o
- .debug_abbrev  0x0000163f       0xb1 ..\obj\lpc.o
- .debug_abbrev  0x000016f0       0xc0 ..\obj\vq.o
- .debug_abbrev  0x000017b0      0x255 ..\obj\cb_search.o
- .debug_abbrev  0x00001a05       0x5b ..\obj\window.o
- .debug_abbrev  0x00001a60      0x15b ..\obj\lsp.o
- .debug_abbrev  0x00001bbb      0x1a3 ..\obj\stm32f4xx_gpio.o
- .debug_abbrev  0x00001d5e      0x136 ..\obj\system_stm32f4xx.o
- .debug_abbrev  0x00001e94       0xe2 ..\obj\syscalls.o
- .debug_abbrev  0x00001f76       0x14 ..\obj\filters_cortexM3.o
- .debug_abbrev  0x00001f8a      0x176 ..\obj\debugLeds.o
- .debug_abbrev  0x00002100      0x2d8 ..\obj\nb_celp.o
- .debug_abbrev  0x000023d8      0x144 ..\obj\modes.o
- .debug_abbrev  0x0000251c      0x167 ..\obj\stm32f4xx_spi.o
- .debug_abbrev  0x00002683      0x2a4 ..\obj\ltp.o
- .debug_abbrev  0x00002927      0x164 ..\obj\stm32f4xx_i2c.o
- .debug_abbrev  0x00002a8b      0x145 ..\obj\misc.o
- .debug_abbrev  0x00002bd0      0x135 ..\obj\vbr.o
- .debug_abbrev  0x00002d05       0x43 ..\obj\gain_table_lbr.o
- .debug_abbrev  0x00002d48       0x14 ..\obj\vq_cortexm3.o
- .debug_abbrev  0x00002d5c       0x43 ..\obj\exc_10_32_table.o
- .debug_abbrev  0x00002d9f      0x187 ..\obj\stm32f4xx_tim.o
+ .debug_abbrev  0x000001b8      0x29b ..\obj\SndPlay.o
+ .debug_abbrev  0x00000453       0x54 ..\obj\lsp_tables_nb.o
+ .debug_abbrev  0x000004a7      0x1e2 ..\obj\timer.o
+ .debug_abbrev  0x00000689      0x1d7 ..\obj\speex.o
+ .debug_abbrev  0x00000860      0x17c ..\obj\SndMic.o
+ .debug_abbrev  0x000009dc      0x247 ..\obj\quant_lsp.o
+ .debug_abbrev  0x00000c23       0x14 ..\obj\ltp_cortexM3.o
+ .debug_abbrev  0x00000c37       0xb0 ..\obj\startup_stm32f4xx.o
+ .debug_abbrev  0x00000ce7      0x1ca ..\obj\filters.o
+ .debug_abbrev  0x00000eb1      0x2d5 ..\obj\bits.o
+ .debug_abbrev  0x00001186      0x1cc ..\obj\main.o
+ .debug_abbrev  0x00001352      0x1e3 ..\obj\stm32f4xx_rcc.o
+ .debug_abbrev  0x00001535      0x16d ..\obj\codec.o
+ .debug_abbrev  0x000016a2       0xb1 ..\obj\lpc.o
+ .debug_abbrev  0x00001753       0xc0 ..\obj\vq.o
+ .debug_abbrev  0x00001813      0x255 ..\obj\cb_search.o
+ .debug_abbrev  0x00001a68       0x5b ..\obj\window.o
+ .debug_abbrev  0x00001ac3      0x15b ..\obj\lsp.o
+ .debug_abbrev  0x00001c1e      0x1a3 ..\obj\stm32f4xx_gpio.o
+ .debug_abbrev  0x00001dc1      0x136 ..\obj\system_stm32f4xx.o
+ .debug_abbrev  0x00001ef7       0xe2 ..\obj\syscalls.o
+ .debug_abbrev  0x00001fd9       0x14 ..\obj\filters_cortexM3.o
+ .debug_abbrev  0x00001fed      0x185 ..\obj\debugLeds.o
+ .debug_abbrev  0x00002172      0x2d8 ..\obj\nb_celp.o
+ .debug_abbrev  0x0000244a      0x144 ..\obj\modes.o
+ .debug_abbrev  0x0000258e      0x167 ..\obj\stm32f4xx_spi.o
+ .debug_abbrev  0x000026f5      0x2a4 ..\obj\ltp.o
+ .debug_abbrev  0x00002999      0x164 ..\obj\stm32f4xx_i2c.o
+ .debug_abbrev  0x00002afd      0x145 ..\obj\misc.o
+ .debug_abbrev  0x00002c42      0x135 ..\obj\vbr.o
+ .debug_abbrev  0x00002d77       0x43 ..\obj\gain_table_lbr.o
+ .debug_abbrev  0x00002dba       0x14 ..\obj\vq_cortexm3.o
+ .debug_abbrev  0x00002dce       0x43 ..\obj\exc_10_32_table.o
+ .debug_abbrev  0x00002e11      0x187 ..\obj\stm32f4xx_tim.o
 
-.debug_aranges  0x00000000      0xfb8
+.debug_aranges  0x00000000      0xfd8
  .debug_aranges
                 0x00000000       0x68 ..\obj\speex_callbacks.o
  .debug_aranges
@@ -2248,55 +2260,55 @@ OUTPUT(speex_codec.elf elf32-littlearm)
  .debug_aranges
                 0x00000330       0xe0 ..\obj\bits.o
  .debug_aranges
-                0x00000410       0x80 ..\obj\main.o
+                0x00000410       0x90 ..\obj\main.o
  .debug_aranges
-                0x00000490      0x178 ..\obj\stm32f4xx_rcc.o
+                0x000004a0      0x178 ..\obj\stm32f4xx_rcc.o
  .debug_aranges
-                0x00000608       0x38 ..\obj\codec.o
+                0x00000618       0x48 ..\obj\codec.o
  .debug_aranges
-                0x00000640       0x28 ..\obj\lpc.o
+                0x00000660       0x28 ..\obj\lpc.o
  .debug_aranges
-                0x00000668       0x30 ..\obj\vq.o
+                0x00000688       0x30 ..\obj\vq.o
  .debug_aranges
-                0x00000698       0x48 ..\obj\cb_search.o
+                0x000006b8       0x48 ..\obj\cb_search.o
  .debug_aranges
-                0x000006e0       0x18 ..\obj\window.o
+                0x00000700       0x18 ..\obj\window.o
  .debug_aranges
-                0x000006f8       0x60 ..\obj\lsp.o
+                0x00000718       0x60 ..\obj\lsp.o
  .debug_aranges
-                0x00000758       0x88 ..\obj\stm32f4xx_gpio.o
+                0x00000778       0x88 ..\obj\stm32f4xx_gpio.o
  .debug_aranges
-                0x000007e0       0x30 ..\obj\system_stm32f4xx.o
+                0x00000800       0x30 ..\obj\system_stm32f4xx.o
  .debug_aranges
-                0x00000810       0x60 ..\obj\syscalls.o
+                0x00000830       0x60 ..\obj\syscalls.o
  .debug_aranges
-                0x00000870       0x20 ..\obj\filters_cortexM3.o
+                0x00000890       0x20 ..\obj\filters_cortexM3.o
  .debug_aranges
-                0x00000890       0x40 ..\obj\debugLeds.o
+                0x000008b0       0x40 ..\obj\debugLeds.o
  .debug_aranges
-                0x000008d0       0xa8 ..\obj\nb_celp.o
+                0x000008f0       0xa8 ..\obj\nb_celp.o
  .debug_aranges
-                0x00000978       0x20 ..\obj\modes.o
+                0x00000998       0x20 ..\obj\modes.o
  .debug_aranges
-                0x00000998       0xe0 ..\obj\stm32f4xx_spi.o
+                0x000009b8       0xe0 ..\obj\stm32f4xx_spi.o
  .debug_aranges
-                0x00000a78       0x68 ..\obj\ltp.o
+                0x00000a98       0x68 ..\obj\ltp.o
  .debug_aranges
-                0x00000ae0      0x120 ..\obj\stm32f4xx_i2c.o
+                0x00000b00      0x120 ..\obj\stm32f4xx_i2c.o
  .debug_aranges
-                0x00000c00       0x40 ..\obj\misc.o
+                0x00000c20       0x40 ..\obj\misc.o
  .debug_aranges
-                0x00000c40       0x30 ..\obj\vbr.o
+                0x00000c60       0x30 ..\obj\vbr.o
  .debug_aranges
-                0x00000c70       0x18 ..\obj\gain_table_lbr.o
+                0x00000c90       0x18 ..\obj\gain_table_lbr.o
  .debug_aranges
-                0x00000c88       0x20 ..\obj\vq_cortexm3.o
+                0x00000ca8       0x20 ..\obj\vq_cortexm3.o
  .debug_aranges
-                0x00000ca8       0x18 ..\obj\exc_10_32_table.o
+                0x00000cc8       0x18 ..\obj\exc_10_32_table.o
  .debug_aranges
-                0x00000cc0      0x2f8 ..\obj\stm32f4xx_tim.o
+                0x00000ce0      0x2f8 ..\obj\stm32f4xx_tim.o
 
-.debug_ranges   0x00000000      0xd38
+.debug_ranges   0x00000000      0xd58
  .debug_ranges  0x00000000       0x58 ..\obj\speex_callbacks.o
  .debug_ranges  0x00000058       0x58 ..\obj\SndPlay.o
  .debug_ranges  0x000000b0       0x38 ..\obj\timer.o
@@ -2306,27 +2318,27 @@ OUTPUT(speex_codec.elf elf32-littlearm)
  .debug_ranges  0x000001d0       0x18 ..\obj\startup_stm32f4xx.o
  .debug_ranges  0x000001e8       0x90 ..\obj\filters.o
  .debug_ranges  0x00000278       0xd0 ..\obj\bits.o
- .debug_ranges  0x00000348       0x70 ..\obj\main.o
- .debug_ranges  0x000003b8      0x168 ..\obj\stm32f4xx_rcc.o
- .debug_ranges  0x00000520       0x28 ..\obj\codec.o
- .debug_ranges  0x00000548       0x18 ..\obj\lpc.o
- .debug_ranges  0x00000560       0x20 ..\obj\vq.o
- .debug_ranges  0x00000580       0x38 ..\obj\cb_search.o
- .debug_ranges  0x000005b8       0x50 ..\obj\lsp.o
- .debug_ranges  0x00000608       0x78 ..\obj\stm32f4xx_gpio.o
- .debug_ranges  0x00000680       0x20 ..\obj\system_stm32f4xx.o
- .debug_ranges  0x000006a0       0x50 ..\obj\syscalls.o
- .debug_ranges  0x000006f0       0x30 ..\obj\debugLeds.o
- .debug_ranges  0x00000720       0x98 ..\obj\nb_celp.o
- .debug_ranges  0x000007b8       0x10 ..\obj\modes.o
- .debug_ranges  0x000007c8       0xd0 ..\obj\stm32f4xx_spi.o
- .debug_ranges  0x00000898       0x58 ..\obj\ltp.o
- .debug_ranges  0x000008f0      0x110 ..\obj\stm32f4xx_i2c.o
- .debug_ranges  0x00000a00       0x30 ..\obj\misc.o
- .debug_ranges  0x00000a30       0x20 ..\obj\vbr.o
- .debug_ranges  0x00000a50      0x2e8 ..\obj\stm32f4xx_tim.o
+ .debug_ranges  0x00000348       0x80 ..\obj\main.o
+ .debug_ranges  0x000003c8      0x168 ..\obj\stm32f4xx_rcc.o
+ .debug_ranges  0x00000530       0x38 ..\obj\codec.o
+ .debug_ranges  0x00000568       0x18 ..\obj\lpc.o
+ .debug_ranges  0x00000580       0x20 ..\obj\vq.o
+ .debug_ranges  0x000005a0       0x38 ..\obj\cb_search.o
+ .debug_ranges  0x000005d8       0x50 ..\obj\lsp.o
+ .debug_ranges  0x00000628       0x78 ..\obj\stm32f4xx_gpio.o
+ .debug_ranges  0x000006a0       0x20 ..\obj\system_stm32f4xx.o
+ .debug_ranges  0x000006c0       0x50 ..\obj\syscalls.o
+ .debug_ranges  0x00000710       0x30 ..\obj\debugLeds.o
+ .debug_ranges  0x00000740       0x98 ..\obj\nb_celp.o
+ .debug_ranges  0x000007d8       0x10 ..\obj\modes.o
+ .debug_ranges  0x000007e8       0xd0 ..\obj\stm32f4xx_spi.o
+ .debug_ranges  0x000008b8       0x58 ..\obj\ltp.o
+ .debug_ranges  0x00000910      0x110 ..\obj\stm32f4xx_i2c.o
+ .debug_ranges  0x00000a20       0x30 ..\obj\misc.o
+ .debug_ranges  0x00000a50       0x20 ..\obj\vbr.o
+ .debug_ranges  0x00000a70      0x2e8 ..\obj\stm32f4xx_tim.o
 
-.debug_line     0x00000000     0x6366
+.debug_line     0x00000000     0x6446
  .debug_line    0x00000000      0x254 ..\obj\speex_callbacks.o
  .debug_line    0x00000254      0x38a ..\obj\SndPlay.o
  .debug_line    0x000005de       0x5c ..\obj\lsp_tables_nb.o
@@ -2338,95 +2350,95 @@ OUTPUT(speex_codec.elf elf32-littlearm)
  .debug_line    0x000012b0       0x97 ..\obj\startup_stm32f4xx.o
  .debug_line    0x00001347      0x93a ..\obj\filters.o
  .debug_line    0x00001c81      0x407 ..\obj\bits.o
- .debug_line    0x00002088      0x29a ..\obj\main.o
- .debug_line    0x00002322      0x4e5 ..\obj\stm32f4xx_rcc.o
- .debug_line    0x00002807       0xee ..\obj\codec.o
- .debug_line    0x000028f5      0x131 ..\obj\lpc.o
- .debug_line    0x00002a26       0xf9 ..\obj\vq.o
- .debug_line    0x00002b1f      0x35a ..\obj\cb_search.o
- .debug_line    0x00002e79       0x5f ..\obj\window.o
- .debug_line    0x00002ed8      0x36b ..\obj\lsp.o
- .debug_line    0x00003243      0x288 ..\obj\stm32f4xx_gpio.o
- .debug_line    0x000034cb      0x149 ..\obj\system_stm32f4xx.o
- .debug_line    0x00003614      0x139 ..\obj\syscalls.o
- .debug_line    0x0000374d      0x128 ..\obj\filters_cortexM3.o
- .debug_line    0x00003875      0x1a1 ..\obj\debugLeds.o
- .debug_line    0x00003a16      0xb91 ..\obj\nb_celp.o
- .debug_line    0x000045a7       0xdf ..\obj\modes.o
- .debug_line    0x00004686      0x39b ..\obj\stm32f4xx_spi.o
- .debug_line    0x00004a21      0x6cf ..\obj\ltp.o
- .debug_line    0x000050f0      0x425 ..\obj\stm32f4xx_i2c.o
- .debug_line    0x00005515      0x18e ..\obj\misc.o
- .debug_line    0x000056a3      0x1b7 ..\obj\vbr.o
- .debug_line    0x0000585a       0x5d ..\obj\gain_table_lbr.o
- .debug_line    0x000058b7       0xa3 ..\obj\vq_cortexm3.o
- .debug_line    0x0000595a       0x5e ..\obj\exc_10_32_table.o
- .debug_line    0x000059b8      0x9ae ..\obj\stm32f4xx_tim.o
+ .debug_line    0x00002088      0x35a ..\obj\main.o
+ .debug_line    0x000023e2      0x4e5 ..\obj\stm32f4xx_rcc.o
+ .debug_line    0x000028c7      0x10e ..\obj\codec.o
+ .debug_line    0x000029d5      0x131 ..\obj\lpc.o
+ .debug_line    0x00002b06       0xf9 ..\obj\vq.o
+ .debug_line    0x00002bff      0x35a ..\obj\cb_search.o
+ .debug_line    0x00002f59       0x5f ..\obj\window.o
+ .debug_line    0x00002fb8      0x36b ..\obj\lsp.o
+ .debug_line    0x00003323      0x288 ..\obj\stm32f4xx_gpio.o
+ .debug_line    0x000035ab      0x149 ..\obj\system_stm32f4xx.o
+ .debug_line    0x000036f4      0x139 ..\obj\syscalls.o
+ .debug_line    0x0000382d      0x128 ..\obj\filters_cortexM3.o
+ .debug_line    0x00003955      0x1a1 ..\obj\debugLeds.o
+ .debug_line    0x00003af6      0xb91 ..\obj\nb_celp.o
+ .debug_line    0x00004687       0xdf ..\obj\modes.o
+ .debug_line    0x00004766      0x39b ..\obj\stm32f4xx_spi.o
+ .debug_line    0x00004b01      0x6cf ..\obj\ltp.o
+ .debug_line    0x000051d0      0x425 ..\obj\stm32f4xx_i2c.o
+ .debug_line    0x000055f5      0x18e ..\obj\misc.o
+ .debug_line    0x00005783      0x1b7 ..\obj\vbr.o
+ .debug_line    0x0000593a       0x5d ..\obj\gain_table_lbr.o
+ .debug_line    0x00005997       0xa3 ..\obj\vq_cortexm3.o
+ .debug_line    0x00005a3a       0x5e ..\obj\exc_10_32_table.o
+ .debug_line    0x00005a98      0x9ae ..\obj\stm32f4xx_tim.o
 
-.debug_str      0x00000000     0x496d
+.debug_str      0x00000000     0x49b0
  .debug_str     0x00000000      0x663 ..\obj\speex_callbacks.o
                                 0x706 (size before relaxing)
- .debug_str     0x00000663      0xa2f ..\obj\SndPlay.o
-                                0xb4f (size before relaxing)
- .debug_str     0x00001092       0x7a ..\obj\lsp_tables_nb.o
+ .debug_str     0x00000663      0xa3e ..\obj\SndPlay.o
+                                0xb66 (size before relaxing)
+ .debug_str     0x000010a1       0x7a ..\obj\lsp_tables_nb.o
                                  0xf3 (size before relaxing)
- .debug_str     0x0000110c      0x1a6 ..\obj\timer.o
-                                0x919 (size before relaxing)
- .debug_str     0x000012b2      0x444 ..\obj\speex.o
+ .debug_str     0x0000111b      0x1a6 ..\obj\timer.o
+                                0x930 (size before relaxing)
+ .debug_str     0x000012c1      0x444 ..\obj\speex.o
                                 0x9ad (size before relaxing)
- .debug_str     0x000016f6      0x16f ..\obj\SndMic.o
-                                0xb33 (size before relaxing)
- .debug_str     0x00001865      0x111 ..\obj\quant_lsp.o
+ .debug_str     0x00001705      0x16f ..\obj\SndMic.o
+                                0xb4a (size before relaxing)
+ .debug_str     0x00001874      0x111 ..\obj\quant_lsp.o
                                 0x6e6 (size before relaxing)
- .debug_str     0x00001976       0xa5 ..\obj\startup_stm32f4xx.o
+ .debug_str     0x00001985       0xa5 ..\obj\startup_stm32f4xx.o
                                 0x124 (size before relaxing)
- .debug_str     0x00001a1b      0x23e ..\obj\filters.o
+ .debug_str     0x00001a2a      0x23e ..\obj\filters.o
                                 0x3a9 (size before relaxing)
- .debug_str     0x00001c59      0x23f ..\obj\bits.o
+ .debug_str     0x00001c68      0x23f ..\obj\bits.o
                                 0x796 (size before relaxing)
- .debug_str     0x00001e98      0x154 ..\obj\main.o
-                                0x2dc (size before relaxing)
- .debug_str     0x00001fec      0x593 ..\obj\stm32f4xx_rcc.o
+ .debug_str     0x00001ea7      0x16c ..\obj\main.o
+                                0x30b (size before relaxing)
+ .debug_str     0x00002013      0x593 ..\obj\stm32f4xx_rcc.o
                                 0x803 (size before relaxing)
- .debug_str     0x0000257f       0x99 ..\obj\codec.o
-                                0x2a8 (size before relaxing)
- .debug_str     0x00002618       0x58 ..\obj\lpc.o
+ .debug_str     0x000025a6       0xb5 ..\obj\codec.o
+                                0x2c4 (size before relaxing)
+ .debug_str     0x0000265b       0x58 ..\obj\lpc.o
                                  0xf1 (size before relaxing)
- .debug_str     0x00002670       0x73 ..\obj\vq.o
+ .debug_str     0x000026b3       0x73 ..\obj\vq.o
                                 0x123 (size before relaxing)
- .debug_str     0x000026e3      0x15e ..\obj\cb_search.o
+ .debug_str     0x00002726      0x15e ..\obj\cb_search.o
                                 0x6fe (size before relaxing)
- .debug_str     0x00002841       0x4b ..\obj\window.o
+ .debug_str     0x00002884       0x4b ..\obj\window.o
                                  0xcf (size before relaxing)
- .debug_str     0x0000288c      0x115 ..\obj\lsp.o
+ .debug_str     0x000028cf      0x115 ..\obj\lsp.o
                                 0x28e (size before relaxing)
- .debug_str     0x000029a1      0x186 ..\obj\stm32f4xx_gpio.o
+ .debug_str     0x000029e4      0x186 ..\obj\stm32f4xx_gpio.o
                                 0x456 (size before relaxing)
- .debug_str     0x00002b27      0x10d ..\obj\system_stm32f4xx.o
+ .debug_str     0x00002b6a      0x10d ..\obj\system_stm32f4xx.o
                                 0x35d (size before relaxing)
- .debug_str     0x00002c34      0x138 ..\obj\syscalls.o
+ .debug_str     0x00002c77      0x138 ..\obj\syscalls.o
                                 0x2a8 (size before relaxing)
- .debug_str     0x00002d6c       0xbb ..\obj\debugLeds.o
-                                0x3c4 (size before relaxing)
- .debug_str     0x00002e27      0x5c3 ..\obj\nb_celp.o
+ .debug_str     0x00002daf       0xbb ..\obj\debugLeds.o
+                                0x3db (size before relaxing)
+ .debug_str     0x00002e6a      0x5c3 ..\obj\nb_celp.o
                                 0xfa6 (size before relaxing)
- .debug_str     0x000033ea       0x9d ..\obj\modes.o
+ .debug_str     0x0000342d       0x9d ..\obj\modes.o
                                 0x56f (size before relaxing)
- .debug_str     0x00003487      0x327 ..\obj\stm32f4xx_spi.o
+ .debug_str     0x000034ca      0x327 ..\obj\stm32f4xx_spi.o
                                 0x63d (size before relaxing)
- .debug_str     0x000037ae      0x1bc ..\obj\ltp.o
+ .debug_str     0x000037f1      0x1bc ..\obj\ltp.o
                                 0x840 (size before relaxing)
- .debug_str     0x0000396a      0x335 ..\obj\stm32f4xx_i2c.o
+ .debug_str     0x000039ad      0x335 ..\obj\stm32f4xx_i2c.o
                                 0x618 (size before relaxing)
- .debug_str     0x00003c9f      0x125 ..\obj\misc.o
+ .debug_str     0x00003ce2      0x125 ..\obj\misc.o
                                 0x38c (size before relaxing)
- .debug_str     0x00003dc4       0xb8 ..\obj\vbr.o
+ .debug_str     0x00003e07       0xb8 ..\obj\vbr.o
                                 0x2a4 (size before relaxing)
- .debug_str     0x00003e7c       0x3d ..\obj\gain_table_lbr.o
+ .debug_str     0x00003ebf       0x3d ..\obj\gain_table_lbr.o
                                  0xc4 (size before relaxing)
- .debug_str     0x00003eb9       0x3e ..\obj\exc_10_32_table.o
+ .debug_str     0x00003efc       0x3e ..\obj\exc_10_32_table.o
                                  0xc7 (size before relaxing)
- .debug_str     0x00003ef7      0xa76 ..\obj\stm32f4xx_tim.o
+ .debug_str     0x00003f3a      0xa76 ..\obj\stm32f4xx_tim.o
                                 0xd83 (size before relaxing)
 
 .comment        0x00000000       0x91
@@ -2665,7 +2677,7 @@ OUTPUT(speex_codec.elf elf32-littlearm)
  .ARM.attributes
                 0x00001077       0x29 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
 
-.debug_frame    0x00000000     0x3dac
+.debug_frame    0x00000000     0x3e1c
  .debug_frame   0x00000000      0x150 ..\obj\speex_callbacks.o
  .debug_frame   0x00000150      0x12c ..\obj\SndPlay.o
  .debug_frame   0x0000027c       0xbc ..\obj\timer.o
@@ -2675,72 +2687,72 @@ OUTPUT(speex_codec.elf elf32-littlearm)
  .debug_frame   0x0000069c       0x48 ..\obj\startup_stm32f4xx.o
  .debug_frame   0x000006e4      0x210 ..\obj\filters.o
  .debug_frame   0x000008f4      0x308 ..\obj\bits.o
- .debug_frame   0x00000bfc      0x178 ..\obj\main.o
- .debug_frame   0x00000d74      0x4d8 ..\obj\stm32f4xx_rcc.o
- .debug_frame   0x0000124c       0x8c ..\obj\codec.o
- .debug_frame   0x000012d8       0x4c ..\obj\lpc.o
- .debug_frame   0x00001324       0x64 ..\obj\vq.o
- .debug_frame   0x00001388       0xd0 ..\obj\cb_search.o
- .debug_frame   0x00001458      0x120 ..\obj\lsp.o
- .debug_frame   0x00001578      0x19c ..\obj\stm32f4xx_gpio.o
- .debug_frame   0x00001714       0x64 ..\obj\system_stm32f4xx.o
- .debug_frame   0x00001778      0x108 ..\obj\syscalls.o
- .debug_frame   0x00001880       0xa0 ..\obj\debugLeds.o
- .debug_frame   0x00001920      0x260 ..\obj\nb_celp.o
- .debug_frame   0x00001b80       0x30 ..\obj\modes.o
- .debug_frame   0x00001bb0      0x2d0 ..\obj\stm32f4xx_spi.o
- .debug_frame   0x00001e80      0x154 ..\obj\ltp.o
- .debug_frame   0x00001fd4      0x3b4 ..\obj\stm32f4xx_i2c.o
- .debug_frame   0x00002388       0x9c ..\obj\misc.o
- .debug_frame   0x00002424       0x70 ..\obj\vbr.o
- .debug_frame   0x00002494      0xa3c ..\obj\stm32f4xx_tim.o
- .debug_frame   0x00002ed0       0x34 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-w_log.o)
- .debug_frame   0x00002f04       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-e_log.o)
- .debug_frame   0x00002f3c       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_fpclassify.o)
- .debug_frame   0x00002f5c       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_matherr.o)
- .debug_frame   0x00002f7c       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_nan.o)
- .debug_frame   0x00002f9c       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-calloc.o)
- .debug_frame   0x00002fbc       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-callocr.o)
- .debug_frame   0x00002fe4       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
- .debug_frame   0x00003004       0x58 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fprintf.o)
- .debug_frame   0x0000305c       0x30 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
- .debug_frame   0x0000308c       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mallocr.o)
- .debug_frame   0x000030c4       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
- .debug_frame   0x000030f0       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memmove.o)
- .debug_frame   0x0000311c       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memset.o)
- .debug_frame   0x00003148       0x30 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mlock.o)
- .debug_frame   0x00003178       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-realloc.o)
- .debug_frame   0x00003198       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-reallocr.o)
- .debug_frame   0x000031d0       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
- .debug_frame   0x000031fc       0x80 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfprintf.o)
- .debug_frame   0x0000327c       0x3c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wbuf.o)
- .debug_frame   0x000032b8       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wsetup.o)
- .debug_frame   0x000032e4       0x64 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
- .debug_frame   0x00003348       0x5c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fflush.o)
- .debug_frame   0x000033a4      0x110 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-findfp.o)
- .debug_frame   0x000034b4       0x50 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-freer.o)
- .debug_frame   0x00003504       0x54 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fwalk.o)
- .debug_frame   0x00003558       0x98 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
- .debug_frame   0x000035f0       0x30 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-makebuf.o)
- .debug_frame   0x00003620       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memchr-stub.o)
- .debug_frame   0x0000364c      0x244 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
- .debug_frame   0x00003890       0x48 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
- .debug_frame   0x000038d8       0x80 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-stdio.o)
- .debug_frame   0x00003958       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-strlen.o)
- .debug_frame   0x00003978       0xbc c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfiprintf.o)
- .debug_frame   0x00003a34       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o)
- .debug_frame   0x00003a60       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o)
- .debug_frame   0x00003a8c       0x3c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fclose.o)
- .debug_frame   0x00003ac8       0x50 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fputwc.o)
- .debug_frame   0x00003b18       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o)
- .debug_frame   0x00003b44       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fvwrite.o)
- .debug_frame   0x00003b7c       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o)
- .debug_frame   0x00003ba8       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o)
- .debug_frame   0x00003bd4       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o)
- .debug_frame   0x00003c00       0x58 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wcrtomb.o)
- .debug_frame   0x00003c58       0x44 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wctomb_r.o)
- .debug_frame   0x00003c9c       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivsi3.o)
- .debug_frame   0x00003cbc       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00003ce4       0x58 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(bpabi.o)
- .debug_frame   0x00003d3c       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
- .debug_frame   0x00003d74       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)
+ .debug_frame   0x00000bfc      0x1b8 ..\obj\main.o
+ .debug_frame   0x00000db4      0x4d8 ..\obj\stm32f4xx_rcc.o
+ .debug_frame   0x0000128c       0xbc ..\obj\codec.o
+ .debug_frame   0x00001348       0x4c ..\obj\lpc.o
+ .debug_frame   0x00001394       0x64 ..\obj\vq.o
+ .debug_frame   0x000013f8       0xd0 ..\obj\cb_search.o
+ .debug_frame   0x000014c8      0x120 ..\obj\lsp.o
+ .debug_frame   0x000015e8      0x19c ..\obj\stm32f4xx_gpio.o
+ .debug_frame   0x00001784       0x64 ..\obj\system_stm32f4xx.o
+ .debug_frame   0x000017e8      0x108 ..\obj\syscalls.o
+ .debug_frame   0x000018f0       0xa0 ..\obj\debugLeds.o
+ .debug_frame   0x00001990      0x260 ..\obj\nb_celp.o
+ .debug_frame   0x00001bf0       0x30 ..\obj\modes.o
+ .debug_frame   0x00001c20      0x2d0 ..\obj\stm32f4xx_spi.o
+ .debug_frame   0x00001ef0      0x154 ..\obj\ltp.o
+ .debug_frame   0x00002044      0x3b4 ..\obj\stm32f4xx_i2c.o
+ .debug_frame   0x000023f8       0x9c ..\obj\misc.o
+ .debug_frame   0x00002494       0x70 ..\obj\vbr.o
+ .debug_frame   0x00002504      0xa3c ..\obj\stm32f4xx_tim.o
+ .debug_frame   0x00002f40       0x34 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-w_log.o)
+ .debug_frame   0x00002f74       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-e_log.o)
+ .debug_frame   0x00002fac       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_fpclassify.o)
+ .debug_frame   0x00002fcc       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_matherr.o)
+ .debug_frame   0x00002fec       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libm.a(lib_a-s_nan.o)
+ .debug_frame   0x0000300c       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-calloc.o)
+ .debug_frame   0x0000302c       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-callocr.o)
+ .debug_frame   0x00003054       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-errno.o)
+ .debug_frame   0x00003074       0x58 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fprintf.o)
+ .debug_frame   0x000030cc       0x30 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-malloc.o)
+ .debug_frame   0x000030fc       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x00003134       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00003160       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memmove.o)
+ .debug_frame   0x0000318c       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memset.o)
+ .debug_frame   0x000031b8       0x30 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mlock.o)
+ .debug_frame   0x000031e8       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-realloc.o)
+ .debug_frame   0x00003208       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-reallocr.o)
+ .debug_frame   0x00003240       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000326c       0x80 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfprintf.o)
+ .debug_frame   0x000032ec       0x3c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wbuf.o)
+ .debug_frame   0x00003328       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wsetup.o)
+ .debug_frame   0x00003354       0x64 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-dtoa.o)
+ .debug_frame   0x000033b8       0x5c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fflush.o)
+ .debug_frame   0x00003414      0x110 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-findfp.o)
+ .debug_frame   0x00003524       0x50 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-freer.o)
+ .debug_frame   0x00003574       0x54 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fwalk.o)
+ .debug_frame   0x000035c8       0x98 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-locale.o)
+ .debug_frame   0x00003660       0x30 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-makebuf.o)
+ .debug_frame   0x00003690       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-memchr-stub.o)
+ .debug_frame   0x000036bc      0x244 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-mprec.o)
+ .debug_frame   0x00003900       0x48 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-reent.o)
+ .debug_frame   0x00003948       0x80 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-stdio.o)
+ .debug_frame   0x000039c8       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-strlen.o)
+ .debug_frame   0x000039e8       0xbc c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-vfiprintf.o)
+ .debug_frame   0x00003aa4       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-writer.o)
+ .debug_frame   0x00003ad0       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-closer.o)
+ .debug_frame   0x00003afc       0x3c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fclose.o)
+ .debug_frame   0x00003b38       0x50 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fputwc.o)
+ .debug_frame   0x00003b88       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fstatr.o)
+ .debug_frame   0x00003bb4       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-fvwrite.o)
+ .debug_frame   0x00003bec       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-isattyr.o)
+ .debug_frame   0x00003c18       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-lseekr.o)
+ .debug_frame   0x00003c44       0x2c c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-readr.o)
+ .debug_frame   0x00003c70       0x58 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wcrtomb.o)
+ .debug_frame   0x00003cc8       0x44 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2\libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00003d0c       0x20 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivsi3.o)
+ .debug_frame   0x00003d2c       0x28 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x00003d54       0x58 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(bpabi.o)
+ .debug_frame   0x00003dac       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_divdi3.o)
+ .debug_frame   0x00003de4       0x38 c:/codest/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2\libgcc.a(_udivdi3.o)

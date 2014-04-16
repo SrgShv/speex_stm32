@@ -88,4 +88,20 @@ WORD checkWord(void);
 
 void getFromFileSpx(BYTE *pack);
 
+#define LIM_N       5
+#define MULT_L0     10000
+#define MULT_L1     17783
+
+struct Limiter
+{
+    int Ulim;
+    int Utrs;
+    int Ui[LIM_N];
+    int Uo[LIM_N];
+    int K[LIM_N];
+} slim;
+
+void initLimiter(void);
+signed short limit(signed short dIn);
+
 #endif /* __MAIN_H */

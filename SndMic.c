@@ -108,7 +108,7 @@ void SPI2_IRQHandler(void)
 		if (InternalBufferSize >= INTERNAL_BUFF_SIZE) // 64
 		{
 			InternalBufferSize = 0;
-			volume = 80;
+			volume = 100;
 			PDM_Filter_64_LSB((BYTE *)InternalBuffer, (WORD *)RecBuf, volume , (PDMFilter_InitStruct *)&Filter);
 
 			//for(i=0; i<PCM_OUT_SIZE; i++)
@@ -117,7 +117,7 @@ void SPI2_IRQHandler(void)
 				//RecBuf[i] = (WORD)(tmp>>2);
 			//};
 
-         IRQ_mic(RecBuf, PCM_OUT_SIZE);
+         IRQ_mic((WORD *)RecBuf, PCM_OUT_SIZE);
 		};
 	};
 }

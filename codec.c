@@ -49,5 +49,14 @@ signed short* decodeSPEEX(BYTE *data)
 	return (signed short*)(&out_short[0]);
 }
 
+void deleteEncoder(void)
+{
+
+}
+
+void deleteDecoder(void)
+{
+
+}
 
 

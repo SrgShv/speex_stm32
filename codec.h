@@ -22,5 +22,6 @@ BYTE* encodeSPEEX(signed short *data);
 void createDecoder(void);
 void deleteEncoder(void);
 signed short* decodeSPEEX(BYTE *data);
+void deleteDecoder(void);
 
 #endif /* __CODEC_H */
